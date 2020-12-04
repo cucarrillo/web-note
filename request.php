@@ -1,7 +1,7 @@
 <?php
 echo "PHP Enabled";
 
-$serverName = "10.116.0.72";
+$serverName = $_POST["ip"];
 $serverUsername = "webnoteusr";
 $serverPassword = "webnoteusr";
 $serverName = "webnote";
@@ -21,3 +21,8 @@ if($resultCheck > 0)
 }
 
 ?>
+
+<form action="request.php" method="get">
+    <input type="text" name="ip">
+    <input type="submit" name="ip">
+</form>
