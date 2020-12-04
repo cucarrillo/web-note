@@ -77,6 +77,16 @@ if(isset($_GET['id']))
 ?>
 
 <form action="request.php" method="get">
-    <input type="text" name="id" value="test">
+    <input type="text" name="id" value="<?php
+    
+    if(isset($_GET['id']))
+    {
+        echo $_GET['id'];
+    }
+    else
+    {
+        echo "";
+    }
+    ?>">
     <input type="submit" name="submit">
 </form>
