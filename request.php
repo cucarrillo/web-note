@@ -28,7 +28,7 @@ class Note
         $query = "SELECT * FROM notes where id = '$noteID';";
 
         // Execute the query
-        $result = mysqli_query($connect, $note);
+        $result = mysqli_query($connect, $query);
 
         // Gather results
         while($row = mysqli_fetch_assoc($result))
