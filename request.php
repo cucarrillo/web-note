@@ -4,7 +4,7 @@ if(isset($_GET['ip']))
 {
     echo "processing";
 
-    $serverName = $_POST["ip"];
+    $serverName = getenv("MYSQL_SERVICE_HOST");
     $serverUsername = "webnoteusr";
     $serverPassword = "webnoteusr";
     $serverName = "webnote";
