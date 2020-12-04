@@ -1,5 +1,4 @@
 <?php
-
 if(isset($_GET['ip']))
 {
     $dbhost     = getenv("MYSQL_SERVICE_HOST");
@@ -7,11 +6,9 @@ if(isset($_GET['ip']))
     $dbpassword = getenv("dbpassword");
     $dbname     = getenv("dbname");
 
-    echo "Connecting to {$dbhost} w/ $dbusername : $dbpassword on $dbname\n";
-
     $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
     
-    $sql = "SELECT * FROM notes;";
+    $sql = "SELECT * FROM notes where id = '$_GET['ip']';";
     $result = mysqli_query($connect, $sql);
     $resultCheck = mysqli_num_rows($result);
 
@@ -28,6 +25,6 @@ if(isset($_GET['ip']))
 ?>
 
 <form action="request.php" method="get">
-    <input type="text" name="ip">
-    <input type="submit" name="ip">
+    <input type="text" name="id">
+    <input type="submit" name="submit">
 </form>
