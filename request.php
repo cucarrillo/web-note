@@ -2,6 +2,8 @@
 
 if(isset($_POST["ip"]))
 {
+    echo "processing";
+    
     $serverName = $_POST["ip"];
     $serverUsername = "webnoteusr";
     $serverPassword = "webnoteusr";
