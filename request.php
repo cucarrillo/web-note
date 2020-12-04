@@ -2,8 +2,6 @@
 
 if(isset($_GET['ip']))
 {
-    echo "processing";
-
     $dbhost     = getenv("MYSQL_SERVICE_HOST");
     $dbusername = getenv("dbusername");
     $dbpassword = getenv("dbpassword");
@@ -11,7 +9,7 @@ if(isset($_GET['ip']))
 
     echo "Connecting to {$dbhost} w/ $dbusername : $dbpassword on $dbname";
 
-    $connect = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname);
+    $connect = mysqli($dbhost, $dbusername, $dbpassword, $dbname);
     
     $sql = "SELECT * FROM notes;";
     $result = mysqli_query($connect, $sql);
