@@ -9,7 +9,7 @@ if(isset($_GET['ip']))
 
     echo "Connecting to {$dbhost} w/ $dbusername : $dbpassword on $dbname";
 
-    $connect = mysqli($dbhost, $dbusername, $dbpassword, $dbname);
+    $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
     
     $sql = "SELECT * FROM notes;";
     $result = mysqli_query($connect, $sql);
