@@ -7,7 +7,7 @@ if(isset($_GET['ip']))
     $dbpassword = getenv("dbpassword");
     $dbname     = getenv("dbname");
 
-    echo "Connecting to {$dbhost} w/ $dbusername : $dbpassword on $dbname";
+    echo "Connecting to {$dbhost} w/ $dbusername : $dbpassword on $dbname\n";
 
     $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
     
