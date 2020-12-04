@@ -4,15 +4,15 @@ if(isset($_GET['ip']))
 {
     echo "processing";
 
-    $serverName = getenv("MYSQL_SERVICE_HOST");
+    $dbhost     = getenv("MYSQL_SERVICE_HOST");
+    $dbusername = getenv("dbusername");
+    $dbpassword = getenv("dbpassword");
+    $dbname     = getenv("dbname");
 
-    echo $serverName;
+    echo "Connecting to {$dbhost} w/ $dbusername : $dbpassword on $dbname";
+
+    $connect = mysqli_connect($dbhost, $dbusername, $dbpassword, $dbname);
     
-    $serverUsername = "webnoteusr";
-    $serverPassword = "webnoteusr";
-    $serverName = "webnote";
-
-    $connect = mysqli_connect($serverName, $serverUsername, $serverPassword, $serverName);
     $sql = "SELECT * FROM notes;";
     $result = mysqli_query($connect, $sql);
     $resultCheck = mysqli_num_rows($result);
