@@ -89,8 +89,9 @@ function getNote($noteID)
 
 if(isset($_GET['id']))
 {
-    echo getNote($_GET['id'])->getMessage();
+    $msg = getNote($_GET['id'])->getMessage();
 
+    echo "Message: \"$msg\"";
 }
 
 ?>
