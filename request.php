@@ -77,16 +77,19 @@ if(isset($_GET['id']))
 ?>
 
 <form action="request.php" method="get">
-    <input type="text" name="id" value="<?php
-    
-    if(isset($_GET['id']))
-    {
-        echo $_GET['id'];
-    }
-    else
-    {
-        echo "";
-    }
-    ?>">
+    <span>Note ID: </span>
+    <input  type="text" 
+            name="id" 
+            value="<?php  
+            if(isset($_GET['id']))
+            { echo $_GET['id']; } else { echo ""; } ?>">
+
     <input type="submit" name="submit">
+    <br>
+    <span>Note Text: </span>
+    <textarea   name="text" 
+                value="<?php
+                if(isset($_GET['text']))
+                { echo $_GET['text']; } else { echo ""; }?>">
+    </textarea>
 </form>
