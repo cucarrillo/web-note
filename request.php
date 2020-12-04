@@ -25,7 +25,7 @@ class Note
         $connection = connectDB();
         
         // Create the query search
-        $query = "SELECT * FROM notes where id = '$noteID';";
+        $query = "SELECT * FROM notes where id = '$id';";
 
         // Execute the query
         $result = mysqli_query($connection, $query);
@@ -33,8 +33,6 @@ class Note
         // Gather results
         while($row = mysqli_fetch_assoc($result))
         {
-            $noteMSG = $row['note'];
-
             $this->note       = $row['note'];
             $this->id         = $row['id'];
             $this->canEdit    = $row['canedit'];
@@ -60,7 +58,10 @@ class Note
 
 function getNote($noteID)
 {
-    return new Note($noteID);
+    $note = new Note($noteID);
+
+    return $note;
+
     /*$dbhost     = getenv("MYSQL_SERVICE_HOST");
     $dbusername = getenv("dbusername");
     $dbpassword = getenv("dbpassword");
@@ -90,7 +91,7 @@ function getNote($noteID)
 if(isset($_GET['id']))
 {
     echo $_GET['id'];
-    
+
     $msg = getNote($_GET['id'])->getMessage();
 
     echo "Message: \"$msg\"";
