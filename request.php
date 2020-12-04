@@ -1,16 +1,16 @@
 <?php
-if(isset($_GET['id']))
+$dbhost     = getenv("MYSQL_SERVICE_HOST");
+$dbusername = getenv("dbusername");
+$dbpassword = getenv("dbpassword");
+$dbname     = getenv("dbname");
+
+function getNote($noteID)
 {
-    $dbhost     = getenv("MYSQL_SERVICE_HOST");
-    $dbusername = getenv("dbusername");
-    $dbpassword = getenv("dbpassword");
-    $dbname     = getenv("dbname");
-
     $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
-    
-    $idTest = $_GET['id'];
 
-    $sql = "SELECT * FROM notes where id = '$idTest';";
+    $noteMSG = null;
+
+    $note = "SELECT * FROM notes where id = '$noteID';";
 
     $result = mysqli_query($connect, $sql);
     $resultCheck = mysqli_num_rows($result);
@@ -19,11 +19,21 @@ if(isset($_GET['id']))
     {
         while($row = mysqli_fetch_assoc($result))
         {
-            echo $row['note'];
+            $noteMSG = $row['note'];
         }
     }
 
+    $connect->close();
+
+    return $noteMSG;
 }
+
+if(isset($_GET['id']))
+{
+    echo getNote($_GET['id']);
+
+}
+
 ?>
 
 <form action="request.php" method="get">
