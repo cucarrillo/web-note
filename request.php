@@ -1,7 +1,7 @@
 <?php
 echo "PHP Enabled";
 
-$serverName = "172.25.116.125";
+$serverName = "10.116.0.72";
 $serverUsername = "webnoteusr";
 $serverPassword = "webnoteusr";
 $serverName = "webnote";
