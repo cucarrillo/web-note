@@ -8,7 +8,9 @@ if(isset($_GET['id']))
 
     $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
     
-    $sql = "SELECT * FROM notes where id = '$_GET['ip']';";
+    $idTest = $_GET['id'];
+
+    $sql = "SELECT * FROM notes where id = '$idTest';";
 
     $result = mysqli_query($connect, $sql);
     $resultCheck = mysqli_num_rows($result);
