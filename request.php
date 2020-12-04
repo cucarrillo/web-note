@@ -1,9 +1,9 @@
 <?php
 
-if(isset($_POST["ip"]))
+if(isset($_GET['ip']))
 {
     echo "processing";
-    
+
     $serverName = $_POST["ip"];
     $serverUsername = "webnoteusr";
     $serverPassword = "webnoteusr";
