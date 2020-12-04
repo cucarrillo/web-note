@@ -6,13 +6,13 @@ function getNote($noteID)
     $dbusername = getenv("dbusername");
     $dbpassword = getenv("dbpassword");
     $dbname     = getenv("dbname");
-    
+
     $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
     $noteMSG = null;
 
     $note = "SELECT * FROM notes where id = '$noteID';";
 
-    $result = mysqli_query($connect, $sql);
+    $result = mysqli_query($connect, $note);
     $resultCheck = mysqli_num_rows($result);
 
     if($resultCheck > 0)
