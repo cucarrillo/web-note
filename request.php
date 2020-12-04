@@ -1,11 +1,12 @@
 <?php
+public $dbhost     = getenv("MYSQL_SERVICE_HOST");
+public $dbusername = getenv("dbusername");
+public $dbpassword = getenv("dbpassword");
+public $dbname     = getenv("dbname");
 
 function getNote($noteID)
 {
-    $dbhost     = getenv("MYSQL_SERVICE_HOST");
-    $dbusername = getenv("dbusername");
-    $dbpassword = getenv("dbpassword");
-    $dbname     = getenv("dbname");
+
 
     $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
     $noteMSG = null;
