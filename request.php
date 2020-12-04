@@ -1,13 +1,13 @@
 <?php
-$dbhost     = getenv("MYSQL_SERVICE_HOST");
-$dbusername = getenv("dbusername");
-$dbpassword = getenv("dbpassword");
-$dbname     = getenv("dbname");
 
 function getNote($noteID)
 {
+    $dbhost     = getenv("MYSQL_SERVICE_HOST");
+    $dbusername = getenv("dbusername");
+    $dbpassword = getenv("dbpassword");
+    $dbname     = getenv("dbname");
+    
     $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
-
     $noteMSG = null;
 
     $note = "SELECT * FROM notes where id = '$noteID';";
