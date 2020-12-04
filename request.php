@@ -1,5 +1,5 @@
 <?php
-if(isset($_GET['ip']))
+if(isset($_GET['id']))
 {
     $dbhost     = getenv("MYSQL_SERVICE_HOST");
     $dbusername = getenv("dbusername");
