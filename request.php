@@ -9,6 +9,7 @@ if(isset($_GET['ip']))
     $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
     
     $sql = "SELECT * FROM notes where id = '$_GET['ip']';";
+
     $result = mysqli_query($connect, $sql);
     $resultCheck = mysqli_num_rows($result);
 
@@ -16,7 +17,6 @@ if(isset($_GET['ip']))
     {
         while($row = mysqli_fetch_assoc($result))
         {
-            echo $row['id'];
             echo $row['note'];
         }
     }
