@@ -83,8 +83,6 @@ if(isset($_GET['id']))
             value="<?php  
             if(isset($_GET['id']))
             { echo $_GET['id']; } else { echo ""; } ?>">
-
-    <input type="submit" name="submit">
     <br>
     <span>Note Text: </span>
     <textarea   name="text" 
@@ -92,4 +90,8 @@ if(isset($_GET['id']))
                 if(isset($_GET['text']))
                 { echo $_GET['text']; } else { echo ""; }?>">
     </textarea>
+    <br>
+    <span>Can edit: </span><input type="checkbox" name="canEdit">
+    <br>
+    <input type="submit" name="submit">
 </form>
