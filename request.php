@@ -10,6 +10,7 @@ if(isset($_POST["ip"]))
     $connect = mysqli_connect($serverName, $serverUsername, $serverPassword, $serverName);
     $sql = "SELECT * FROM notes;";
     $result = mysqli_query($connect, $sql);
+    $resultCheck = mysqli_num_rows($result);
 
     if($resultCheck > 0)
     {
