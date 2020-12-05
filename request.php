@@ -40,6 +40,16 @@ function main()
     if and ID was provided then we load the note
 
     */
+
+
+    /*  */
+    if(isset($_GET['load_id']) || isset($_GET['note']))
+    {
+        $note = getNote($_GET['load_id']);
+
+        $note->setMessage($_GET['note']);
+        $note->update();
+    }
 }
 
 /* Page entry point */

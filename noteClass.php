@@ -83,6 +83,20 @@ class Note
         return true;
     }
 
+    function update()
+    {
+        $connection = connectDB();
+
+        $note = $this->note;
+        $id = $this->id;
+
+        $query = "UPDATE notes SET note='$note' WHERE id = $id";
+
+        $result = mysqli_query($connection, $query);
+
+        disconnectDB($connection);
+    }
+
     /* set the message */
     function setMessage($note)
     {
