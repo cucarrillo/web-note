@@ -23,7 +23,7 @@ class Note
 
         // Create the insert query
         // ID auto creates
-        $query = "INSERT INTO notes (note, edit, password) VALUES ($this->note, $this->edit, $this->password)";
+        $query = "INSERT INTO notes (note, edit, password) VALUES ($message, $edit, $password)";
         
         // Attempt the query
         if(mysqli_query($connection, $query))
