@@ -53,6 +53,14 @@ function main()
         $note->setMessage($_GET['note']);
         $note->update();
     }
+
+    if(!isset($_GET['load_id']) && isset($_GET['note']) && isset($_GET['note_update']))
+    {
+        echo "created";
+
+        $note = new Note();
+        $note->create($note, false, null);
+    }
 }
 
 /* Page entry point */
