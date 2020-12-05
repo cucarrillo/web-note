@@ -44,8 +44,10 @@ function main()
 
 
     /*  */
-    if(isset($_GET['load_id']) || isset($_GET['note']) || isset($_GET['note_update']))
+    if(isset($_GET['load_id']) && isset($_GET['note']) && isset($_GET['note_update']))
     {
+        echo "updated";
+
         $note = getNote($_GET['load_id']);
 
         $note->setMessage($_GET['note']);
