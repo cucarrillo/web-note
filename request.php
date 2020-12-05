@@ -62,7 +62,7 @@ main();
     <input type="text" name="note" value="<?php if(isset($_GET['load_id'])) { echo getNote($_GET['load_id'])->getMessage(); }?>">
     <br>
     <span>Note ID: </span>
-    <input type="text" name="load_id" disabled=true value="<?php if(isset($_GET['load_id'])) { echo $_GET['load_id']; } else { echo "NOTE_ID"; } ?>">
+    <input type="text" name="load_id" disabled=false value="<?php if(isset($_GET['load_id'])) { echo $_GET['load_id']; } else { echo "NOTE_ID"; } ?>">
   	<br>
     <span>Can Edit: </span>
     <input type="checkbox" name="edit">
