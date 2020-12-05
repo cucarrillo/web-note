@@ -62,6 +62,7 @@ main();
                                         
                                         if(isset($_GET['load_id']))
                                         {
+                                            echo "test";
                                             echo getNote($_GET['load_id'])->getMessage();
                                         }
 
