@@ -44,7 +44,7 @@ function main()
 
 
     /*  */
-    if(isset($_GET['load_id']) || isset($_GET['note']))
+    if(isset($_GET['load_id']) || isset($_GET['note']) || $_GET['note'] != "")
     {
         $note = getNote($_GET['load_id']);
 
