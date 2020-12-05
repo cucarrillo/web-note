@@ -1,97 +1,6 @@
 <?php
-
-/* Connects to the database */
-function connectDB()
-{
-    // variables to connect to the database
-    $dbhost     = getenv("MYSQL_SERVICE_HOST");
-    $dbusername = getenv("dbusername");
-    $dbpassword = getenv("dbpassword");
-    $dbname     = getenv("dbname");
-
-    // actual connection
-    $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
-
-    return $connect; // return connection
-}
-
-function printMessage($message) { echo "<script>console.log(\"$message\")</script>"; }
-
-/* Note Class */
-class Note
-{
-    // note properties
-    private $note       = null;
-    private $id         = null;
-    private $edit    = null;
-    private $password   = null;
-
-    function __construct($id)
-    {
-        // Connect to the database
-        $connection = connectDB();
-        
-        // Create the query search
-        $query = "SELECT * FROM notes where id = '$id';";
-
-        // Execute the query
-        $result = mysqli_query($connection, $query);
-
-        // Check if the note exists
-        $resultCheck = mysqli_num_rows($result);
-
-        if($resultCheck > 0)
-        {
-            // Gather results
-            while($row = mysqli_fetch_assoc($result))
-            {
-                $this->note     = $row['note'];
-                $this->id       = $row['id'];
-                $this->edit     = $row['edit'];
-                $this->password = $row['password'];
-            }
-        }
-        else
-        {
-            $this->note     = $row['note'];
-            $this->id       = $row['id'];
-            $this->edit     = $row['edit'];
-            $this->password = $row['password'];
-        }
-
-        // close the connection
-        $connection->close();
-    }
-
-    /* set the message */
-    function setMessage($note)
-    {
-        $this->note = $note;
-    }
-    
-    function submit($note)
-    {
-        //"INSERT INTO Students (name, lastname, email) VALUES ('Test', 'Testing', 'Testing@tesing.com')"
-
-        $connection = connectDB();
-
-        $query = "INSERT INTO notes (id, note, edit, password) VALUES ($this->id, $this->note, $this->edit, $this->password)";
-        
-        if(mysqli_query($connection, $query))
-        {
-            $noteid = $this->id;
-
-            printMessage("Added note \"$noteid\"");
-        }
-
-        $connection->close();
-    }
-
-    function getID()        { return $this->id; }
-    function getMessage()   { return $this->note; }
-    function canEdit()      { return $this->canEdit; }
-    function getPassword()  { return $this->password; }
-}
+require "libSQL.php";
+require "noteClass.php";
 
 function getNote($noteID)
 {
@@ -100,31 +9,97 @@ function getNote($noteID)
     return $note;
 }
 
-if(isset($_GET['id']))
+/*
+if there is an ID then the note exists, so we retrive the note
+*/
+
+$hasID = isset($_GET['id']);
+$hasNote = isset($_GET['note']);
+
+if($hasID || !$hasNote)
+{
+    $msg = getNote($_GET['id'])->getMessage();
+
+    echo "Message: \"$msg\"";
+} /* if there is no ID and there is text then we create the note */
+else if($hasNote)
 {
     $msg = getNote($_GET['id'])->getMessage();
 
     echo "Message: \"$msg\"";
 }
 
+function main()
+{
+    /* We need to check if we the note exists */
+    /* To do this we check two variables: ID and NOTE */
+    /* 
+    
+    if and ID was provided then we load the note
+
+    */
+}
+
+/* Page entry point */
+main();
+
 ?>
 
+<!-- Form to load a note -->
+<form action="request.php" method="get">
+    <span>Load Note: </span>
+    <input type="text" name="load_id" value="NOTE_ID">
+    <input type="submit" name="note_load" value="Load Note">
+</form>
+
+<br>
+
+<!-- Form to create a note -->
+<form action="request.php" method="get">
+    <span>Note Text: </span>
+    <input type="text" name="note" value="
+                                        <?php
+                                        
+                                        getNote($_GET['id'])->getMessage();
+
+                                        ?>">
+    <br>
+    <span>Note ID: 
+        <?php
+
+        //if(isset($_GET['']))
+
+        ?>
+    </span>
+  	<br>
+    <span>Can Edit: </span>
+    <input type="checkbox" name="edit">
+</form>
+
+
+<!--
 <form action="request.php" method="get">
     <span>Note ID: </span>
     <input  type="text" 
             name="id" 
-            value="<?php  
+            value="?php  
             if(isset($_GET['id']))
             { echo $_GET['id']; } else { echo ""; } ?>">
     <br>
     <span>Note Text: </span>
     <input  type="textarea"
             name="note" 
-            value="<?php
+            value="?php
             if(isset($_GET['note']))
             { echo $_GET['note']; } else { echo ""; }?>">
     <br>
     <span>Can edit: </span><input type="checkbox" name="canEdit">
     <br>
+    <input  type="text"
+            name="password" 
+            value="?php
+            if(isset($_GET['password']))
+            { echo $_GET['password']; } else { echo ""; }?>">
+    <br>
     <input type="submit" name="submit">
-</form>
+</form>-->
