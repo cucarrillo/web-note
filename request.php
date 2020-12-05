@@ -59,15 +59,7 @@ main();
 <!-- Form to create a note -->
 <form action="request.php" method="get">
     <span>Note Text: </span>
-    <input type="text" name="note" value="
-                                        <?php
-                                        
-                                        if(isset($_GET['load_id']))
-                                        {
-                                            echo getNote($_GET['load_id'])->getMessage();
-                                        }
-
-                                        ?>">
+    <input type="text" name="note" value="<?php if(isset($_GET['load_id'])) { echo getNote($_GET['load_id'])->getMessage(); }?>">
     <br>
     <span>Note ID: 
         <?php
