@@ -64,7 +64,7 @@ function main()
         echo "created";
 
         $note = new Note();
-        $note->create($note, false, null);
+        $note->create($_GET['note'], false, null);
     }
 }
 
