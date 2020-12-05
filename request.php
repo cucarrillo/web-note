@@ -60,11 +60,11 @@ main();
     <input type="text" name="note" value="
                                         <?php
                                         
-                                        if(isset($_GET['id']))
+                                        if(isset($_GET['load_id']))
                                         {
-                                            echo getNote($_GET['id'])->getMessage();
+                                            echo getNote($_GET['load_id'])->getMessage();
                                         }
-                                        
+
                                         ?>">
     <br>
     <span>Note ID: 
