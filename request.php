@@ -59,7 +59,7 @@ function main()
         $note->update();
     }
 
-    if(!isset($_GET['load_id']) && isset($_GET['note']) && isset($_GET['note_update']))
+    if(!hasValue('load_id') && isset($_GET['note']) && isset($_GET['note_update']))
     {
         echo "created";
 
