@@ -90,8 +90,8 @@ class Note
         $note = $this->note;
         $id = $this->id;
 
-        echo $note;
-        echo $id;
+        echo "NOTE: $note || ";
+        echo "ID: $id || ";
 
         $query = "UPDATE notes SET note='$note' WHERE id = $id;";
 

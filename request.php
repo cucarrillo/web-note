@@ -15,6 +15,7 @@ function getNote($noteID)
 if there is an ID then the note exists, so we retrive the note
 */
 
+/*
 $hasID = isset($_GET['id']);
 $hasNote = isset($_GET['note']);
 
@@ -23,13 +24,13 @@ if($hasID || !$hasNote)
     $msg = getNote($_GET['id'])->getMessage();
 
     echo "Message: \"$msg\"";
-} /* if there is no ID and there is text then we create the note */
+} // if there is no ID and there is text then we create the note 
 else if($hasNote)
 {
     $msg = getNote($_GET['id'])->getMessage();
 
     echo "Message: \"$msg\"";
-}
+}*/
 
 function main()
 {
