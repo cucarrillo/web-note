@@ -15,7 +15,7 @@ function connectDB()
     return $connect; // return connection
 }
 
-function log($message) { echo "<script>console.log(\"$message\")</script>"; }
+function printMessage($message) { echo "<script>console.log(\"$message\")</script>"; }
 
 /* Note Class */
 class Note
@@ -68,7 +68,7 @@ class Note
         {
             $noteid = $this->id;
 
-            log("Added note \"$noteid\"");
+            printMessage("Added note \"$noteid\"");
         }
 
         $connection->close();
