@@ -32,6 +32,11 @@ else if($hasNote)
     echo "Message: \"$msg\"";
 }*/
 
+function hasValue($value)
+{
+  return isset($_GET[$value]) && !empty(trim($_GET[$value]));
+}
+
 function main()
 {
     /* We need to check if we the note exists */
@@ -71,7 +76,7 @@ main();
 <!-- Form to load a note -->
 <form action="request.php" method="get">
     <span>Load Note: </span>
-    <input type="text" name="load_id" value="<?php if(isset($_GET['load_id'])) { echo $_GET['load_id']; } else { echo "NOTE_ID"; }?>">
+    <input type="text" name="load_id" value="<?php echo hasValue('load_id') ? $_GET['load_id'] : "NOTE_ID"; ?>">
     <input type="submit" name="note_load" value="Load Note">
 </form>
 
