@@ -4,7 +4,9 @@ require "noteClass.php";
 
 function getNote($noteID)
 {
-    $note = new Note($noteID);
+    $note = new Note();
+
+    $note->load($noteID);
 
     return $note;
 }
@@ -62,7 +64,6 @@ main();
                                         
                                         if(isset($_GET['load_id']))
                                         {
-                                            echo $_GET['load_id'];
                                             echo getNote($_GET['load_id'])->getMessage();
                                         }
 
