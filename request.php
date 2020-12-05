@@ -37,13 +37,26 @@ class Note
         // Execute the query
         $result = mysqli_query($connection, $query);
 
-        // Gather results
-        while($row = mysqli_fetch_assoc($result))
+        // Check if the note exists
+        $resultCheck = mysqli_num_rows($result);
+
+        if($resultCheck > 0)
         {
-            $this->note       = $row['note'];
-            $this->id         = $row['id'];
-            $this->edit    = $row['edit'];
-            $this->password   = $row['password'];
+            // Gather results
+            while($row = mysqli_fetch_assoc($result))
+            {
+                $this->note     = $row['note'];
+                $this->id       = $row['id'];
+                $this->edit     = $row['edit'];
+                $this->password = $row['password'];
+            }
+        }
+        else
+        {
+            $this->note     = $row['note'];
+            $this->id       = $row['id'];
+            $this->edit     = $row['edit'];
+            $this->password = $row['password'];
         }
 
         // close the connection
