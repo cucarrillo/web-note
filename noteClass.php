@@ -90,7 +90,10 @@ class Note
         $note = $this->note;
         $id = $this->id;
 
-        $query = "UPDATE notes SET note='$note' WHERE id = $id";
+        echo $note;
+        echo $id;
+
+        $query = "UPDATE notes SET note='$note' WHERE id = $id;";
 
         $result = mysqli_query($connection, $query);
 
