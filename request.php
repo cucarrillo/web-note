@@ -3,21 +3,27 @@
 /* Connects to the database */
 function connectDB()
 {
+    // variables to connect to the database
     $dbhost     = getenv("MYSQL_SERVICE_HOST");
     $dbusername = getenv("dbusername");
     $dbpassword = getenv("dbpassword");
     $dbname     = getenv("dbname");
 
+    // actual connection
     $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
 
     return $connect; // return connection
 }
 
+function log($message) { echo "<script>console.log(\"$message\")</script>"; }
+
+/* Note Class */
 class Note
 {
+    // note properties
     private $note       = null;
     private $id         = null;
-    private $canEdit    = null;
+    private $edit    = null;
     private $password   = null;
 
     function __construct($id)
@@ -36,7 +42,7 @@ class Note
         {
             $this->note       = $row['note'];
             $this->id         = $row['id'];
-            $this->canEdit    = $row['canedit'];
+            $this->edit    = $row['edit'];
             $this->password   = $row['password'];
         }
 
@@ -44,6 +50,7 @@ class Note
         $connection->close();
     }
 
+    /* set the message */
     function setMessage($note)
     {
         $this->note = $note;
@@ -51,7 +58,20 @@ class Note
     
     function submit($note)
     {
+        //"INSERT INTO Students (name, lastname, email) VALUES ('Test', 'Testing', 'Testing@tesing.com')"
+
+        $connection = connectDB();
+
+        $query = "INSERT INTO notes (id, note, edit, password) VALUES ($this->id, $this->note, $this->edit, $this->password)";
         
+        if(mysqli_query($connection, $query))
+        {
+            $noteid = $this->id;
+
+            log("Added note \"$noteid\"");
+        }
+
+        $connection->close();
     }
 
     function getID()        { return $this->id; }
@@ -85,11 +105,11 @@ if(isset($_GET['id']))
             { echo $_GET['id']; } else { echo ""; } ?>">
     <br>
     <span>Note Text: </span>
-    <textarea   name="text" 
-                value="<?php
-                if(isset($_GET['text']))
-                { echo $_GET['text']; } else { echo ""; }?>">
-    </textarea>
+    <input  type="textarea"
+            name="note" 
+            value="<?php
+            if(isset($_GET['note']))
+            { echo $_GET['note']; } else { echo ""; }?>">
     <br>
     <span>Can edit: </span><input type="checkbox" name="canEdit">
     <br>
