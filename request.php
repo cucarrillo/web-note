@@ -59,10 +59,10 @@ main();
 <!-- Form to create a note -->
 <form action="request.php" method="get">
     <span>Note Text: </span>
-    <input type="text" name="note_id" value="<?php if(isset($_GET['load_id'])) { echo getNote($_GET['load_id'])->getMessage(); }?>">
+    <input type="text" name="note" value="<?php if(isset($_GET['load_id'])) { echo getNote($_GET['load_id'])->getMessage(); }?>">
     <br>
     <span>Note ID: </span>
-    <input type="text" disabled=true value="<?php if(isset($_GET['load_id'])) { echo $_GET['load_id']; } else { echo "NOTE_ID"; } ?>">
+    <input type="text" name="note_id" disabled=true value="<?php if(isset($_GET['load_id'])) { echo $_GET['load_id']; } else { echo "NOTE_ID"; } ?>">
   	<br>
     <span>Can Edit: </span>
     <input type="checkbox" name="edit">
