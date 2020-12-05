@@ -50,7 +50,7 @@ main();
 <!-- Form to load a note -->
 <form action="request.php" method="get">
     <span>Load Note: </span>
-    <input type="text" name="load_id" value="NOTE_ID">
+    <input type="text" name="load_id" value="<?php if(isset($_GET['load_id'])) { echo $_GET['load_id'] } else { echo "NOTE_ID" }?>">
     <input type="submit" name="note_load" value="Load Note">
 </form>
 
@@ -61,13 +61,7 @@ main();
     <span>Note Text: </span>
     <input type="text" name="note" value="<?php if(isset($_GET['load_id'])) { echo getNote($_GET['load_id'])->getMessage(); }?>">
     <br>
-    <span>Note ID: 
-        <?php
-
-        //if(isset($_GET['']))
-
-        ?>
-    </span>
+    <span>Note ID: <?php if(isset($_GET['load_id'])) { echo $_GET['load_id'] } else { echo "NOTE_ID" } ?></span>
   	<br>
     <span>Can Edit: </span>
     <input type="checkbox" name="edit">
