@@ -60,7 +60,7 @@ main();*/
 ?>
 
 <!-- Form to load a note -->
-<form action="request.php" method="get">
+<form action="test.php" method="get">
     <span>Load Note: </span>
     <input type="text" name="noteID" value="<?php echo hasValue('noteID') ? $_GET['noteID'] : ""; ?>">
     <input type="submit" name="note_load" value="Load Note">
@@ -69,7 +69,7 @@ main();*/
 <br>
 
 <!-- Form to create a note -->
-<form action="request.php" method="get">
+<form action="test.php" method="get">
     <span>Note Text: </span>
     <input type="text" name="noteMSG" value="<?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">
     <br>
