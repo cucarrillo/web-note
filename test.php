@@ -16,6 +16,23 @@ function hasValue($value)
   return isset($_GET[$value]) && !empty(trim($_GET[$value]));
 }
 
+function getMessage($noteID)
+{
+    return getNote($noteID)->getMessage();
+}
+
+function noteExists($noteID)
+{
+
+}
+
+function createNote($note, $edit, $password)
+{
+
+}
+
+
+
 /*
 function main()
 {
@@ -45,7 +62,7 @@ main();*/
 <!-- Form to load a note -->
 <form action="request.php" method="get">
     <span>Load Note: </span>
-    <input type="text" name="load_id" value="<?php echo hasValue('load_id') ? $_GET['load_id'] : ""; ?>">
+    <input type="text" name="noteID" value="<?php echo hasValue('noteID') ? $_GET['noteID'] : ""; ?>">
     <input type="submit" name="note_load" value="Load Note">
 </form>
 
@@ -54,10 +71,10 @@ main();*/
 <!-- Form to create a note -->
 <form action="request.php" method="get">
     <span>Note Text: </span>
-    <input type="text" name="note" value="<?php if(isset($_GET['load_id'])) { echo getNote($_GET['load_id'])->getMessage(); }?>">
+    <input type="text" name="noteMSG" value="<?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">
     <br>
     <span>Note ID: </span>
-    <input type="text" name="load_id" value="<?php if(isset($_GET['load_id'])) { echo $_GET['load_id']; } else { echo ""; } ?>">
+    <input type="text" name="noteIDA" value="<?php if(isset($_GET['noteID'])) { echo $_GET['noteID']; } else { echo ""; } ?>">
   	<br>
     <span>Can Edit: </span>
     <input type="checkbox" name="edit">
