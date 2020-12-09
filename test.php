@@ -107,15 +107,23 @@ main();
     <span><?php echo getNote($_GET['noteID'])->canEdit() ? "This note can be edited" : "This note cannot be edited"; ?></span>
   	<br>
   	<br>
-  	
+
+      <?php $pass = getNote($_GET['noteID'])->getPassword(); 
+      
+      if($pass == '')
+      {
+          echo "no password";
+      }
+      else
+      {
+          echo $pass;
+      }
+
+      
+      ?>
+      	
     <input type="button" value="Copy Password">
     <?php if(getNote($_GET['noteID'])->canEdit()) { echo "<input type=\"submit\" name=\"submit\" value=\"Update\">"; } ?>
 
-    <?php
-    
-    echo getNote($_GET['noteID'])->getPassword();
-
-    ?>
-    
     
 </form>
