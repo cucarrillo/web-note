@@ -90,17 +90,16 @@ main();
 }
 </style>
 
-<!-- Form to load a note -->
-<form action="test.php" method="get">
+
+<form action="test.php" method="get" id="updateForm">
+    
+    <!-- Form to load a note -->
     <span>Load Note: </span>
     <input type="text" name="noteID" placeholder="I.E: 2163" value="<?php echo hasValue('noteID') ? $_GET['noteID'] : ''; ?>">
     <input type="submit" name="submit" value="Load Note">
-</form>
+    <br>
 
-<br>
-
-<!-- Form to create a note -->
-<form action="test.php" method="get" id="updateForm">
+    <!-- Form to create a note -->
     <span>Note Text: </span>
     <!--<input class="submission" type="text" name="noteMSG" value="?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">-->
     <textarea class="submission" name="noteMSG" form="updateForm"><?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?></textarea>
