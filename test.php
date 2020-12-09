@@ -79,6 +79,14 @@ function main()
 
 ?>
 
+<style>
+.submission 
+{
+    width: 200px;
+    height: 200px;
+}
+</style>
+
 <!-- Form to load a note -->
 <form action="test.php" method="get">
     <span>Load Note: </span>
@@ -91,8 +99,7 @@ function main()
 <!-- Form to create a note -->
 <form action="test.php" method="get">
     <span>Note Text: </span>
-    <input type="text" name="noteMSG" value="<?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">
-    <textarea name="noteMSGA"><?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?></textarea>
+    <input class="submission" type="text" name="noteMSG" value="<?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">
     <br>
     <span>Note ID: </span>
     <input type="text" value="<?php if(isset($_GET['noteID'])) { echo $_GET['noteID']; } else { echo ''; } ?>" disabled>
