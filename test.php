@@ -1,5 +1,9 @@
 <?php
 
-echo $_SERVER['SERVER_NAME'];
+
+
+include $_SERVER['SERVER_NAME']."lib/libSQL.php";
+
+
 
 ?>
