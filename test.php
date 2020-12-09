@@ -21,6 +21,15 @@ function getNoteMessage($noteID)
     return getNote($noteID)->getMessage();
 }
 
+function updateNote($noteID, $noteMSG, $noteEDIT, $notePASS)
+{
+    $note = getNote($noteID);
+    $note->setMessage($noteMSG);
+
+    $note->update();
+
+}
+
 function noteExists($noteID)
 {
 
@@ -57,6 +66,17 @@ function main()
 
 main();*/
 
+function main()
+{
+    if(hasValue("submit"))
+    {
+        if($_GET["submit"] == "Update")
+        {
+            updateNote($_GET["noteID"]);
+        }
+    }
+}
+
 ?>
 
 <!-- Form to load a note -->
@@ -80,5 +100,5 @@ main();*/
     <span>Can Edit: </span>
     <input type="checkbox" name="edit">
     <br>
-    <input type="submit" name="note_update" value="Update">
+    <input type="submit" name="submit" value="Update">
 </form>
