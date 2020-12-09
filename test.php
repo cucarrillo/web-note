@@ -104,10 +104,19 @@ main();
     <!-- Form to create a note -->
     <textarea class="submission" name="noteMSG" form="updateForm" placeholder="Note Text"><?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?></textarea>
     <br>
-    <span><?php echo getNote($_GET['noteID'])->canEdit() ? "This note can be edited" : "This note cannot be edited"; ?>
-     editable</span>
+    <span><?php echo getNote($_GET['noteID'])->canEdit() ? "This note can be edited" : "This note cannot be edited"; ?></span>
   	<br>
   	<br>
-  	<input type="button" value="Copy Password">
-    <input type="submit" name="submit" value="Update">
+  	
+    <input type="button" value="Copy Password">
+    <?php
+    
+    if(getNote($_GET['noteID'])->canEdit())
+    {
+        echo "<input type=\"submit\" name=\"submit\" value=\"Update\">";
+    }
+
+    ?>
+    
+    
 </form>
