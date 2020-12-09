@@ -97,9 +97,10 @@ function main()
 <br>
 
 <!-- Form to create a note -->
-<form action="test.php" method="get">
+<form action="test.php" method="get" id="updateForm">
     <span>Note Text: </span>
-    <input class="submission" type="text" name="noteMSG" value="<?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">
+    <!--<input class="submission" type="text" name="noteMSG" value="?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">-->
+    <textarea class="submission" name="noteMSG" form="updateForm"><?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?></textarea>
     <br>
     <span>Note ID: </span>
     <input type="text" value="<?php if(isset($_GET['noteID'])) { echo $_GET['noteID']; } else { echo ''; } ?>" disabled>
