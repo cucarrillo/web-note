@@ -100,5 +100,5 @@ main();
   	<br>
 	<input type="password" placeholder="Note password">
   	<br>
-    <input type="submit" value="Create Note">
+    <input type="submit" name="submit" value="Create Note">
 </form>
