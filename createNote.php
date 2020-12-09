@@ -91,39 +91,13 @@ main();
 </style>
 
 
-<form action="test.php" method="get" id="updateForm">
-    
-    <!-- Form to load a note -->
-    <span>Note ID: </span>
-    <input type="text" name="noteID" placeholder="I.E: 2163" value="<?php echo hasValue('noteID') ? $_GET['noteID'] : ''; ?>">
-    <input type="submit" name="submit" value="Load Note">
-    
-    <br>
-    <br>
-
-    <!-- Form to create a note -->
-    <textarea class="submission" name="noteMSG" form="updateForm" placeholder="Note Text" <?php echo getNote($_GET['noteID'])->canEdit() ? '' : 'disabled' ?>><?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?></textarea>
-    <br>
-    <span><?php echo getNote($_GET['noteID'])->canEdit() ? "This note can be edited" : "This note cannot be edited"; ?></span>
+<form action="createNote.php" method="get" id="createForm">    
+    <textarea class="submission" name="noteMSG" form="updateForm" placeholder="Note Text"> </textarea>
+  <br>
+  	<span>Note can be edited:</span>
+  	<input type="checkbox">
   	<br>
+	<input type="password" placeholder="Note password">
   	<br>
-
-      <?php $pass = getNote($_GET['noteID'])->getPassword(); 
-      
-      if($pass == '')
-      {
-          echo "no password";
-      }
-      else
-      {
-          echo $pass;
-      }
-
-      
-      ?>
-      	
-    <input type="button" value="Copy Password">
-    <?php if(getNote($_GET['noteID'])->canEdit()) { echo "<input type=\"submit\" name=\"submit\" value=\"Update\">"; } ?>
-
-    
+    <input type="submit" value="Create Note">
 </form>
