@@ -73,7 +73,7 @@ function main()
         if($_GET["submit"] == "Update")
         {
             echo "test";
-            updateNote($_GET["noteID"]);
+            updateNote($_GET["noteID"], $_GET["noteMSG"], false, null);
         }
     }
 }
