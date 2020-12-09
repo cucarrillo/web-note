@@ -37,7 +37,9 @@ function noteExists($noteID)
 
 function createNote($note, $edit, $password)
 {
+    $note = new Note();
 
+    $note->create($note, $edit, $password);
 }
 
 
@@ -70,10 +72,9 @@ function main()
 {
     if(hasValue("submit"))
     {
-        if($_GET["submit"] == "Update")
+        if($_GET["submit"] == "Create Note")
         {
-            echo "test";
-            updateNote($_GET["noteID"], $_GET["noteMSG"], false, null);
+            createNote($_GET["noteMSG"], true, null);
         }
     }
 }
@@ -93,9 +94,9 @@ main();
 
 <form action="createNote.php" method="get" id="createForm">    
     <textarea class="submission" name="noteMSG" form="updateForm" placeholder="Note Text"> </textarea>
-  <br>
+    <br>
   	<span>Note can be edited:</span>
-  	<input type="checkbox">
+  	<input type="checkbox" name="noteEDIT">
   	<br>
 	<input type="password" placeholder="Note password">
   	<br>
