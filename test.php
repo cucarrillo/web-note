@@ -16,7 +16,7 @@ function hasValue($value)
   return isset($_GET[$value]) && !empty(trim($_GET[$value]));
 }
 
-function getMessage($noteID)
+function getNoteMessage($noteID)
 {
     return getNote($noteID)->getMessage();
 }
@@ -71,7 +71,7 @@ main();*/
 <!-- Form to create a note -->
 <form action="test.php" method="get">
     <span>Note Text: </span>
-    <input type="text" name="noteMSG" value="">
+    <input type="text" name="noteMSG" value="<?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">
     <br>
     <span>Note ID: </span>
     <input type="text" name="noteIDA" value="<?php if(isset($_GET['noteID'])) { echo $_GET['noteID']; } else { echo ""; } ?>">
