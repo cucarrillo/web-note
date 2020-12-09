@@ -33,11 +33,13 @@ class Note
         if(mysqli_query($connection, $query))
         {
             // Check what ID we are up to
-            $query = "SELECT COUNT(*) FROM notes;";
+            $query = "SELECT * FROM notes;";
 
             $return = mysqli_query($connection, $query);
 
-            echo "TEST?: $return :??";
+            $test = mysqli_num_rows($return);
+
+            echo "TEST?: $test :??";
 
             $idCount = -1;
 
