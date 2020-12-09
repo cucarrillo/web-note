@@ -21,12 +21,11 @@ class Note
         // Connect to the database
         $connection = connectDB();
 
+        $passwordQuery = $password == null ? 'NULL' : $password
+
         // Create the insert query
         // ID auto creates
-        $query = "INSERT INTO notes (note, edit, password) VALUES (".
-        $message.", ".
-        $edit.", "."
-        $password);";
+        $query = "INSERT INTO notes (note, edit, password) VALUES ('$message', $edit, $passwordQuery);";
 
         echo "TEST?: $query :??";
 
