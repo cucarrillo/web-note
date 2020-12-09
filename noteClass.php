@@ -27,16 +27,17 @@ class Note
         // ID auto creates
         $query = "INSERT INTO notes (note, edit, password) VALUES ('$message', $edit, $passwordQuery);";
 
-        echo "TEST?: $query :??";
 
         
         // Attempt the query
         if(mysqli_query($connection, $query))
         {
             // Check what ID we are up to
-            $query = "SELECT * FROM notes";
+            $query = "SELECT COUNT(*) FROM notes;";
 
-            $idCount = mysql_num_rows($query);
+            echo "TEST?: $query :??";
+
+            $idCount = -1;
 
             $this->id = $idCount;
 
