@@ -78,6 +78,8 @@ function main()
     }
 }
 
+main();
+
 ?>
 
 <style>
