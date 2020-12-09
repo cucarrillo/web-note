@@ -93,7 +93,7 @@ main();
 
 
 <form action="createNote.php" method="get" id="createForm">    
-    <textarea class="submission" name="noteMSG" form="updateForm" placeholder="Note Text"> </textarea>
+    <textarea class="submission" name="noteMSG" form="createForm" placeholder="Note Text"></textarea>
     <br>
   	<span>Note can be edited:</span>
   	<input type="checkbox" name="noteEDIT">
