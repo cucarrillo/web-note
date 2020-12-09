@@ -28,6 +28,8 @@ class Note
         $edit.", "."
         $password);";
 
+        echo "TEST?: $query :??";
+
         
         // Attempt the query
         if(mysqli_query($connection, $query))
