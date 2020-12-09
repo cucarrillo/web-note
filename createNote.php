@@ -23,6 +23,7 @@ function getNoteMessage($noteID)
 
 function updateNote($noteID, $noteMSG, $noteEDIT, $notePASS)
 {
+    echo "updateD?:D:D:D:";
     $note = getNote($noteID);
     $note->setMessage($noteMSG);
 
