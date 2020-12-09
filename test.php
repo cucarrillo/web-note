@@ -74,7 +74,7 @@ main();*/
     <input type="text" name="noteMSG" value="<?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">
     <br>
     <span>Note ID: </span>
-    <input type="text" enabled="false" name="noteIDA" value="<?php if(isset($_GET['noteID'])) { echo $_GET['noteID']; } else { echo ""; } ?>">
+    <input type="text" value="<?php if(isset($_GET['noteID'])) { echo $_GET['noteID']; } else { echo ""; } ?>" disabled>
   	<br>
     <span>Can Edit: </span>
     <input type="checkbox" name="edit">
