@@ -110,6 +110,12 @@ main();
   	
     <input type="button" value="Copy Password">
     <?php if(getNote($_GET['noteID'])->canEdit()) { echo "<input type=\"submit\" name=\"submit\" value=\"Update\">"; } ?>
+
+    <?php
+    
+    echo getNote($_GET['noteID'])->getPassword();
+
+    ?>
     
     
 </form>
