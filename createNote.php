@@ -36,11 +36,11 @@ function noteExists($noteID)
 
 }
 
-function createNote($note, $edit, $password)
+function createNote($noteMSG, $edit, $password)
 {
     $note = new Note();
 
-    $note->create($note, $edit, $password);
+    $note->create($noteMSG, $edit, $password);
 }
 
 
