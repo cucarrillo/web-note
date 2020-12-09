@@ -10,14 +10,12 @@ function connectDB()
     $dbname     = getenv("dbname");
 
     // actual connection
-    $connect = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
+    $connection = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
 
-    return $connect; // return connection
+    return $connection; // return connection
 }
 
 /* Disconnectes a connection */
 function disconnectDB($connection) { $connection->close(); }
-
-function printMessage($message) { echo "<script>console.log(\"$message\")</script>"; }
 
 ?>

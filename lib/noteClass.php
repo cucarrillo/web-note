@@ -1,4 +1,89 @@
 <?php
+
+function createNote($note, $edit, $password)
+{
+    // Connect to the database
+    $connection = connectDB();
+
+    // If there is no password then we pass NULL, otherwise pass the password
+    $passwordQuery = ($password == null) ? 'NULL' : $password;
+
+    // MySQL query to add the new note
+    $query = "INSERT INTO notes (note, edit, password) VALUES ('$note', $edit, $passwordQuery)";
+
+    // Execute the query
+    if(mysqli_query($connection, $query))
+    {
+        // If it is successful then we return the note ID
+        
+        // MySQL query to see how many notes we have
+        $query = "SELECT * FROM notes;";
+
+
+        $queryExecute = mysqli_query($connection, $query);
+
+        $noteCount = mysqli_num_rows($queryExecute);
+
+        return $noteCount;
+    }
+    else
+    {
+        // If the execute fails then we return error code -1
+
+        return -1;
+    }
+
+    // Disconnect from the database
+    disconnectDB($connection);
+}
+
+function loadNote($id)
+{
+    // Connect to the database
+    $connection = connectDB();
+        
+    // MySQL query search
+    $query = "SELECT * FROM notes where id = '$id';";
+
+    // Execute the query
+    $result = mysqli_query($connection, $query);
+
+    // Check if the note exists
+    $resultCheck = mysqli_num_rows($result);
+
+
+    $note = NULL;
+    $edit = NULL;
+    $password = NULL;
+
+    // if note exists then load
+    if($resultCheck > 0)
+    {
+        // Gather results
+        while($row = mysqli_fetch_assoc($result))
+        {
+            $this->note     = $row['note'];
+            $this->id       = $row['id'];
+            $this->edit     = $row['edit'];
+            $this->password = $row['password'];
+        }
+    }
+    else // if not then return false
+    {
+        return false;
+    }
+
+    // close the connection
+    disconnectDB($connection);
+
+    return true;
+}
+
+function noteExists()
+{
+
+}
+
 /* Note Class */
 class Note
 {
@@ -37,12 +122,8 @@ class Note
 
             $return = mysqli_query($connection, $query);
 
-            $test = mysqli_num_rows($return);
-
-            echo "TEST?: $test :??";
-
-            $idCount = -1;
-
+            $idCount = mysqli_num_rows($return);
+            
             $this->id = $idCount;
 
             printMessage("Added note \"$this->id\"");
