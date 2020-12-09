@@ -24,9 +24,9 @@ class Note
         // Create the insert query
         // ID auto creates
         $query = "INSERT INTO notes (note, edit, password) VALUES (" + 
-        $message + ", " + 
-        $edit + ", " + 
-        "$password);";
+        $message.", ".
+        $edit.", "."
+        $password);";
 
         
         // Attempt the query
