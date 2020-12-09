@@ -1,3 +1,4 @@
-<html>
-    <h1>Test File.</h1>
-</html>
+<form action="index.php" method="get">
+    <input type="text" name="test">
+    <input type="submit">
+</form>
