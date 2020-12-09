@@ -102,7 +102,7 @@ main();
     <br>
 
     <!-- Form to create a note -->
-    <textarea class="submission" name="noteMSG" form="updateForm" placeholder="Note Text" <?php echo hasValue('noteID') ? '' : 'disabled' ?>><?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?></textarea>
+    <textarea class="submission" name="noteMSG" form="updateForm" placeholder="Note Text" <?php echo getNote($_GET['noteID'])->canEdit() ? '' : 'disabled' ?>><?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?></textarea>
     <br>
     <span><?php echo getNote($_GET['noteID'])->canEdit() ? "This note can be edited" : "This note cannot be edited"; ?></span>
   	<br>
