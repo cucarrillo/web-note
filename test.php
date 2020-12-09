@@ -94,7 +94,7 @@ main();
 <form action="test.php" method="get" id="updateForm">
     
     <!-- Form to load a note -->
-    <span>Load Note: </span>
+    <span>Note ID: </span>
     <input type="text" name="noteID" placeholder="I.E: 2163" value="<?php echo hasValue('noteID') ? $_GET['noteID'] : ''; ?>">
     <input type="submit" name="submit" value="Load Note">
     
@@ -109,14 +109,7 @@ main();
   	<br>
   	
     <input type="button" value="Copy Password">
-    <?php
-    
-    if(getNote($_GET['noteID'])->canEdit())
-    {
-        echo "<input type=\"submit\" name=\"submit\" value=\"Update\">";
-    }
-
-    ?>
+    <?php if(getNote($_GET['noteID'])->canEdit()) { echo "<input type=\"submit\" name=\"submit\" value=\"Update\">"; } ?>
     
     
 </form>
