@@ -15,7 +15,7 @@ class Note
 
         // Set the passed values to the class
         $this->note     = $message;
-        $this->canEdit  = $edit;
+        $this->edit  = $edit;
         $this->password = $password;
 
         // Connect to the database
@@ -108,7 +108,7 @@ class Note
 
     function getID()        { return $this->id; }
     function getMessage()   { return $this->note; }
-    function canEdit()      { return $this->canEdit; }
+    function canEdit()      { return $this->edit; }
     function getPassword()  { return $this->password; }
 }
 ?>
