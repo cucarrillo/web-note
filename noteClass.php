@@ -21,7 +21,7 @@ class Note
         // Connect to the database
         $connection = connectDB();
 
-        $passwordQuery = $password == null ? 'NULL' : $password
+        $passwordQuery = $password == null ? 'NULL' : $password;
 
         // Create the insert query
         // ID auto creates
