@@ -2,7 +2,7 @@
 
 
 
-include $_SERVER['SERVER_NAME']."lib/libSQL.php";
+include "libSQL.php";
 
 
 
