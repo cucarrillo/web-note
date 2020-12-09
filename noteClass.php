@@ -35,7 +35,9 @@ class Note
             // Check what ID we are up to
             $query = "SELECT COUNT(*) FROM notes;";
 
-            echo "TEST?: $query :??";
+            $return = mysqli_query($connection, $query);
+
+            echo "TEST?: $return :??";
 
             $idCount = -1;
 
