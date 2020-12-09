@@ -72,7 +72,7 @@ main();*/
 <form action="test.php" method="get">
     <span>Note Text: </span>
     <input type="text" name="noteMSG" value="<?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">
-    <textarea name="noteMSGA" value="<?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">
+    <textarea name="noteMSGA" value="<?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>"></textarea>
     <br>
     <span>Note ID: </span>
     <input type="text" value="<?php if(isset($_GET['noteID'])) { echo $_GET['noteID']; } else { echo ''; } ?>" disabled>
