@@ -63,7 +63,7 @@ main();*/
 <form action="test.php" method="get">
     <span>Load Note: </span>
     <input type="text" name="noteID" value="<?php echo hasValue('noteID') ? $_GET['noteID'] : ''; ?>">
-    <input type="submit" name="note_load" value="Load Note">
+    <input type="submit" name="submit" value="Load Note">
 </form>
 
 <br>
@@ -71,7 +71,7 @@ main();*/
 <!-- Form to create a note -->
 <form action="test.php" method="get">
     <span>Note Text: </span>
-    <input type="text" name="noteMSG" value="<?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?>">
+    <input type="text" name="noteMSG" value="">
     <br>
     <span>Note ID: </span>
     <input type="text" name="noteIDA" value="<?php if(isset($_GET['noteID'])) { echo $_GET['noteID']; } else { echo ""; } ?>">
