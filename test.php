@@ -90,7 +90,6 @@ main();
 }
 </style>
 
-
 <form action="test.php" method="get" id="updateForm">
     
     <!-- Form to load a note -->
@@ -102,14 +101,11 @@ main();
     <br>
 
     <!-- Form to create a note -->
-    <span>Note Text: </span>
-    <textarea class="submission" name="noteMSG" form="updateForm"><?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?></textarea>
+    <textarea class="submission" name="noteMSG" form="updateForm" placeholder="Note Text"></textarea>
     <br>
-    <span>Note ID: </span>
-    <input type="text" value="<?php if(isset($_GET['noteID'])) { echo $_GET['noteID']; } else { echo ''; } ?>" disabled>
+    <span><?php echo getNote($_GET['noteID'])->canEdit() ? "This note can be edited" : "This note cannot be edited"; ?></span>
   	<br>
-    <span>Can Edit: </span>
-    <input type="checkbox" name="edit">
-    <br>
+  	<br>
+  	<input type="button" value="Copy Password">
     <input type="submit" name="submit" value="Update">
 </form>
