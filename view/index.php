@@ -45,20 +45,20 @@ main();
                 name="noteMSG" 
                 form="updateForm" 
                 placeholder="Note Text" 
-                <?php /* Check if the note is editable */ echo loadNote($_POST['id'])[1] ? '' : 'disabled' ?>
-                ><?php /* Load the note */ echo hasValue('id') ? loadNote($_POST['id'])[0] : ''; ?></textarea>
+                <?php /* Check if the note is editable */ echo loadNote($_POST['id'], $_POST['password'])[1] ? '' : 'disabled' ?>
+                ><?php /* Load the note */ echo hasValue('id') ? loadNote($_POST['id'] $_POST['password'])[0] : ''; ?></textarea>
     
     <br>
     
     <span>
             <?php /* Alert the user if the note can be edited */ 
-            echo loadNote($_POST['id'])[1] ? "This note can be edited" : "This note cannot be edited"; ?>
+            echo loadNote($_POST['id'], $_POST['password'])[1] ? "This note can be edited" : "This note cannot be edited"; ?>
     </span>
       
     <br>
   	<br>
 
     <?php /* If editable then we show the update note button */ 
-    echo loadNote($_POST['id'])[1] ? "<input type=\"submit\" name=\"submit\" value=\"Update\">" : ""; ?>
+    echo loadNote($_POST['id'], $_POST['password'])[1] ? "<input type=\"submit\" name=\"submit\" value=\"Update\">" : ""; ?>
     
 </form>
