@@ -99,7 +99,7 @@ function loadNote($id)
     {
         disconnectDB($connection);
 
-        return false;
+        return mysql_error();
     }
 
     // close the connection
