@@ -60,9 +60,10 @@ function createNote($note, $edit, $password)
     {
         // If the execute fails then we return error code -1
         
+        return mysqli_error($connection);
+        
         disconnectDB($connection);
 
-        return mysqli_error($exec);
     }
 }
 
