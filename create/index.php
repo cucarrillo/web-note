@@ -10,20 +10,14 @@ function main()
 {
     if(hasValue("submit"))
     {
-        echo "has value";
-
         if($_POST["submit"] == "Create Note")
         {
-            echo "submititt";
             $note = $_POST["note"];
             $edit = $_POST["edit"];
             $password = hasValue("password") ? $_POST["password"] : NULL;
 
             echo createNote($note, $edit, $password);
         }
-    }
-    else{
-        echo "submit failed";
     }
 }
 

@@ -32,7 +32,7 @@ function createNote($note, $edit, $password)
     $passwordQuery = ($password == null) ? 'NULL' : $password;
 
     // MySQL query to add the new note
-    $query = "INSERT INTO notes (note, edit, password) VALUES ('$note', $edit, $passwordQuery)";
+    $query = "INSERT INTO notes (note, edit, password) VALUES ('$note', $edit, $passwordQuery);";
 
     // Execute the query
     if(mysqli_query($connection, $query))
