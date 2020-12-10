@@ -1,4 +1,23 @@
 <!-- Webpage to create a note -->
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="centerBorder">
+            <form action="#" method="post" id="createForm">    
+            <textarea class="submission" name="note" form="createForm" placeholder="Note Text"></textarea>
+            <br>
+            <span>Note can be edited:</span>
+            <input type="checkbox" name="edit">
+            <br>
+            <input type="password" name="password" placeholder="Note password">
+            <br>
+            <input type="submit" name="submit" value="Create Note">
+            </form>
+        </div>
+    </body>
+</html>
 
 <?php
 
@@ -22,27 +41,4 @@ function main()
 }
 
 // Execute main
-main();
-
-?>
-
-<style>
-.submission 
-{
-    width: 200px;
-    height: 200px;
-}
-</style>
-
-
-<link rel="stylesheet" href="style.css">
-<form action="#" method="post" id="createForm">    
-    <textarea class="submission" name="note" form="createForm" placeholder="Note Text"></textarea>
-    <br>
-  	<span>Note can be edited:</span>
-  	<input type="checkbox" name="edit">
-  	<br>
-	<input type="password" name="password" placeholder="Note password">
-  	<br>
-    <input type="submit" name="submit" value="Create Note">
-</form>
+main(); ?>

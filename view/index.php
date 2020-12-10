@@ -1,5 +1,48 @@
-<?php
+<!-- Webpage to load/edit a note -->
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="centerBorder">
+            <form action="#" method="post" id="updateForm">
+                
+                <!-- Form to load a note -->
+                <span>Note ID: </span>
+                <input type="text" name="id" placeholder="I.E: 2163" value="<?php echo hasValue('id') ? $_POST['id'] : ''; ?>">
+                <input type="password" name="password" placeholder="Password" value="<?php echo hasValue('password') ? $_POST['password'] : '' ?>">
+                <input type="submit" name="submit" value="Load Note">
+                
+                <br>
+                <br>
 
+                <!-- Note load -->
+                <textarea class="submission" 
+                            name="note" 
+                            form="updateForm" 
+                            placeholder="Note Text" 
+                            <?php /* Check if the note is editable */ echo loadNote($_POST['id'], $_POST['password'])[1] ? '' : 'disabled' ?>
+                            ><?php /* Load the note */ echo hasValue('id') ? loadNote($_POST['id'], $_POST['password'])[0] : ''; ?></textarea>
+                
+                <br>
+                
+                <span>
+                        <?php /* Alert the user if the note can be edited */ 
+                        echo loadNote($_POST['id'], $_POST['password'])[1] ? "This note can be edited" : "This note cannot be edited"; ?>
+                </span>
+                
+                <br>
+                <br>
+
+                <?php /* If editable then we show the update note button */ 
+                echo loadNote($_POST['id'], $_POST['password'])[1] ? "<input type=\"submit\" name=\"submit\" value=\"Update\">" : ""; ?>
+                
+            </form>
+        </div>
+    </body>
+</html>
+
+<?php
 // Imports
 require "webnote.php";
 
@@ -16,50 +59,4 @@ function main()
 }
 
 // Execute main
-main();
-
-?>
-
-<style>
-.submission 
-{
-    width: 200px;
-    height: 200px;
-}
-</style>
-
-
-<link rel="stylesheet" href="style.css">
-<form action="#" method="post" id="updateForm">
-    
-    <!-- Form to load a note -->
-    <span>Note ID: </span>
-    <input type="text" name="id" placeholder="I.E: 2163" value="<?php echo hasValue('id') ? $_POST['id'] : ''; ?>">
-    <input type="password" name="password" placeholder="Password" value="<?php echo hasValue('password') ? $_POST['password'] : '' ?>">
-    <input type="submit" name="submit" value="Load Note">
-    
-    <br>
-    <br>
-
-    <!-- Note load -->
-    <textarea class="submission" 
-                name="note" 
-                form="updateForm" 
-                placeholder="Note Text" 
-                <?php /* Check if the note is editable */ echo loadNote($_POST['id'], $_POST['password'])[1] ? '' : 'disabled' ?>
-                ><?php /* Load the note */ echo hasValue('id') ? loadNote($_POST['id'], $_POST['password'])[0] : ''; ?></textarea>
-    
-    <br>
-    
-    <span>
-            <?php /* Alert the user if the note can be edited */ 
-            echo loadNote($_POST['id'], $_POST['password'])[1] ? "This note can be edited" : "This note cannot be edited"; ?>
-    </span>
-      
-    <br>
-  	<br>
-
-    <?php /* If editable then we show the update note button */ 
-    echo loadNote($_POST['id'], $_POST['password'])[1] ? "<input type=\"submit\" name=\"submit\" value=\"Update\">" : ""; ?>
-    
-</form>
+main();?>

@@ -5,7 +5,14 @@ body
     color: white;
 }
 
-.centerBorder {
+.submission 
+{
+    width: 200px;
+    height: 200px;
+}
+
+.centerBorder
+{
     margin: auto;
     width: 50%;
     border: 3px solid black;
