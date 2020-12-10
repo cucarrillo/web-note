@@ -25,16 +25,11 @@ function hasValue($value) { return isset($_POST[$value]) && !empty(trim($_POST[$
 //       to create the note
 function createNote($note, $edit, $password)
 {
-    echo "test.";
     // Connect to the database
     $connection = connectDB();
-    echo "test..";
 
     // If there is no password then we pass NULL, otherwise pass the password
     $passwordQuery = ($password == null) ? 'NULL' : $password;
-    echo "test...";
-
-    echo "|$note, $edit, $passwordQuery|";
 
     // MySQL query to add the new note
     $query = "INSERT INTO notes (note, edit, password) VALUES ('$note', $edit, $passwordQuery);";

@@ -17,6 +17,7 @@ function main()
             $password = hasValue("password") ? $_POST["password"] : NULL;
 
             echo createNote($note, $edit, $password);
+            echo "[".mysql_error()."]";
         }
     }
 }
