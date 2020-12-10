@@ -36,8 +36,6 @@ function createNote($note, $edit, $password)
     // MySQL query to add the new note
     $query = "INSERT INTO notes (note, edit, password) VALUES ('$noteQuery', $edit, '$passwordQuery');";
 
-    echo $query;
-
     $exec = mysqli_query($connection, $query);
 
     // Execute the query
@@ -137,9 +135,6 @@ function noteExists($id)
 
     // MySQL query to find the note
     $query = "SELECT * FROM notes where id='$id'";
-    
-    // Execute the query
-    $result = mysqli_query($connection, $query);
 
     // Count how many results we got back
     $resultCheck = mysqli_num_rows($result);

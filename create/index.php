@@ -14,7 +14,9 @@ function main()
             $edit = hasValue("edit") ? "true" : "false";
             $password = hasValue("password") ? $_POST["password"] : NULL;
 
-            echo createNote($note, $edit, $password);
+            $id = createNote($note, $edit, $password);
+
+            echo "<script>alert(\"Note created (ID: $id)\");</script>"
         }
     }
 }
