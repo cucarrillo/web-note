@@ -118,6 +118,7 @@ function loadNote($id, $pass)
         }
         else
         {
+            echo "password:[$password]?[$pass]";
             return array("Wrong password", false, NULL);
         }
     }
