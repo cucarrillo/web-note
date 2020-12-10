@@ -16,7 +16,7 @@ function main()
 
             $id = createNote($note, $edit, $password);
 
-            echo "<script>alert(\"Note created (ID: $id)\");</script>"
+            echo "<script>alert(\"Note created (ID: $id)\");</script>";
         }
     }
 }
