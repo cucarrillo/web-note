@@ -1,3 +1,22 @@
+<?php
+// Imports
+require "webnote.php";
+
+// Entry Point
+function main()
+{
+    if(hasValue("submit"))
+    {
+        if($_POST["submit"] == "Update")
+        {
+            updateNote($_POST["id"], $_POST["note"]);
+        }
+    }
+}
+
+// Execute main
+main();?>
+
 <!-- Webpage to load/edit a note -->
 <html>
     <head>
@@ -41,22 +60,3 @@
         </div>
     </body>
 </html>
-
-<?php
-// Imports
-require "webnote.php";
-
-// Entry Point
-function main()
-{
-    if(hasValue("submit"))
-    {
-        if($_POST["submit"] == "Update")
-        {
-            updateNote($_POST["id"], $_POST["note"]);
-        }
-    }
-}
-
-// Execute main
-main();?>
