@@ -136,6 +136,9 @@ function noteExists($id)
     // MySQL query to find the note
     $query = "SELECT * FROM notes where id='$id'";
 
+    // Execute the query
+    $result = mysqli_query($connection, $query);
+    
     // Count how many results we got back
     $resultCheck = mysqli_num_rows($result);
 
