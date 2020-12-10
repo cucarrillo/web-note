@@ -79,6 +79,6 @@ main();
     <input type="button" value="Copy Password">
 
     <?php /* If editable then we show the update note button */ 
-    echo loadNote($_POST['id'])[1] ? "<input type=\"submit\" name=\"submit\" value=\"Update\">" : ""; } ?>
+    echo loadNote($_POST['id'])[1] ? "<input type=\"submit\" name=\"submit\" value=\"Update\">" : ""; ?>
     
 </form>
