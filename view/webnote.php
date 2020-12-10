@@ -34,7 +34,9 @@ function createNote($note, $edit, $password)
     $passwordQuery = ($password == null) ? 'NULL' : mysqli_real_escape_string($connection, $password);
     
     // MySQL query to add the new note
-    $query = "INSERT INTO notes (note, edit, password) VALUES ('$noteQuery', $edit, $passwordQuery);";
+    $query = "INSERT INTO notes (note, edit, password) VALUES ('$noteQuery', $edit, '$passwordQuery');";
+
+    echo $query;
 
     $exec = mysqli_query($connection, $query);
 
@@ -150,7 +152,7 @@ function noteExists($id)
 function updateNote($id, $note)
 {
     // Check if the note exsists
-    // if(!noteExists($id)) { return false; }
+    if(!noteExists($id)) { return false; }
 
     // Connect to the database
     $connection = connectDB();
