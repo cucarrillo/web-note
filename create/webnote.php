@@ -62,7 +62,7 @@ function createNote($note, $edit, $password)
         
         disconnectDB($connection);
 
-        return mysql_error($exec);
+        return mysql_errno($exec);
     }
 }
 
