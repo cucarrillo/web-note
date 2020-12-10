@@ -150,7 +150,7 @@ function noteExists($id)
 function updateNote($id, $note)
 {
     // Check if the note exsists
-    if(!noteExists($id)) { return false; }
+    // if(!noteExists($id)) { return false; }
 
     // Connect to the database
     $connection = connectDB();
