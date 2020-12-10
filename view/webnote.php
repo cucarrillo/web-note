@@ -110,7 +110,21 @@ function loadNote($id, $pass)
     // close the connection
     disconnectDB($connection);
 
-    return array($note, $edit, $password);
+    if($password != '' && $password != NULL)
+    {
+        if($password == $pass)
+        {
+            return array($note, $edit, $password);
+        }
+        else
+        {
+            return array("Wrong password", false, NULL);
+        }
+    }
+    else
+    {
+        return array($note, $edit, $password);
+    }
 }
 
 /* Checks if a note exists */
