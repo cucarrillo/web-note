@@ -35,6 +35,7 @@ main();
 </style>
 
 
+<link rel="stylesheet" href="style.css">
 <form action="#" method="post" id="createForm">    
     <textarea class="submission" name="note" form="createForm" placeholder="Note Text"></textarea>
     <br>

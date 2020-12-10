@@ -29,6 +29,7 @@ main();
 </style>
 
 
+<link rel="stylesheet" href="style.css">
 <form action="#" method="post" id="updateForm">
     
     <!-- Form to load a note -->
