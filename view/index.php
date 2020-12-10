@@ -65,7 +65,8 @@ main();
       }
       else
       {
-          echo "<input type=\"password\" value=\"$pass\" readonly>";
+          echo "<script> function copyPass() { var pass = document.getElementById(\"pass\"); pass.select(); document.execCommand(\"copy\"); } </script>";
+          echo "<input type=\"password\" value=\"$pass\" id=\"pass\" readonly>";
           echo "<input type=\"button\" value=\"Copy Password\" onclick=\"copyPass();\">";
       }
       ?>
