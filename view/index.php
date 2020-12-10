@@ -59,19 +59,16 @@ main();
 
       <?php $pass = loadNote($_POST['id'])[2];
       
-      echo $pass;
-
       if($pass == '')
       {
-          echo "no password";
+          echo "No password";
       }
       else
       {
-          echo $pass;
+          echo "<input type=\"password\" value=\"$pass\" disabled>"
+          echo "<input type=\"button\" value=\"Copy Password\" onclick=\"copyPass();\">";
       }
       ?>
-      	
-    <input type="button" value="Copy Password">
 
     <?php /* If editable then we show the update note button */ 
     echo loadNote($_POST['id'])[1] ? "<input type=\"submit\" name=\"submit\" value=\"Update\">" : ""; ?>
