@@ -22,6 +22,9 @@ function main()
             echo createNote($note, $edit, $password);
         }
     }
+    else{
+        echo "submit failed";
+    }
 }
 
 // Execute main
