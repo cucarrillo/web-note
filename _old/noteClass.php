@@ -24,17 +24,17 @@ function createNote($note, $edit, $password)
 
         $noteCount = mysqli_num_rows($queryExecute);
 
+        disconnectDB($connection);
+
         return $noteCount;
     }
     else
     {
         // If the execute fails then we return error code -1
+        disconnectDB($connection);
 
         return -1;
     }
-
-    // Disconnect from the database
-    disconnectDB($connection);
 }
 
 function loadNote($id)
@@ -62,26 +62,61 @@ function loadNote($id)
         // Gather results
         while($row = mysqli_fetch_assoc($result))
         {
-            $this->note     = $row['note'];
-            $this->id       = $row['id'];
-            $this->edit     = $row['edit'];
-            $this->password = $row['password'];
+            $note     = $row['note'];
+            $edit     = $row['edit'];
+            $password = $row['password'];
         }
     }
     else // if not then return false
     {
+        disconnectDB($connection);
+
         return false;
     }
 
     // close the connection
     disconnectDB($connection);
 
-    return true;
+    return array($note, $edit, $password);
 }
 
-function noteExists()
+function noteExists($id)
 {
+    // Connect to the database
+    $connection = connectDB();
 
+    // MySQL query to find the note
+    $query = "SELECT * FROM notes where id='$id'";
+
+    // Count how many results we got back
+    $resultCheck = mysqli_num_rows($result);
+
+    // Close the connection
+    disconnectDB($connection);
+
+    // Return true if we found more than 1, otherwise return false
+    return ($resultCheck > 0) ? true : false;
+}
+
+function updateNote($id, $note)
+{
+    // Check if the note exsists
+    if(!noteExists($id)) { return false; }
+
+    // Connect to the database
+    $connection = connectDB();
+
+    // MySQL query to find the note
+    $query = "UPDATE notes SET note='$note' WHERE id = $id;";
+
+    // Execute the query
+    $result = mysqli_query($connection, $query);
+
+    // Close the connection
+    disconnectDB($connection);
+    
+    // Return the result
+    return $result;
 }
 
 /* Note Class */

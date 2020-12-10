@@ -1,83 +1,21 @@
 <?php
-require "libSQL.php";
-require "noteClass.php";
 
-function getNote($noteID)
-{
-    $note = new Note();
+// Imports
+require "webnote.php";
 
-    $note->load($noteID);
-
-    return $note;
-}
-
-function hasValue($value)
-{
-  return isset($_GET[$value]) && !empty(trim($_GET[$value]));
-}
-
-function getNoteMessage($noteID)
-{
-    return getNote($noteID)->getMessage();
-}
-
-function updateNote($noteID, $noteMSG, $noteEDIT, $notePASS)
-{
-    $note = getNote($noteID);
-    $note->setMessage($noteMSG);
-
-    $note->update();
-
-}
-
-function noteExists($noteID)
-{
-
-}
-
-function createNote($note, $edit, $password)
-{
-
-}
-
-
-
-/*
-function main()
-{
-    if(isset($_GET['load_id']) && isset($_GET['note']) && isset($_GET['note_update']))
-    {
-        echo "updated";
-
-        $note = getNote($_GET['load_id']);
-
-        $note->setMessage($_GET['note']);
-        $note->update();
-    }
-
-    if(!hasValue('load_id') && isset($_GET['note']) && isset($_GET['note_update']))
-    {
-        echo "created";
-
-        $note = new Note();
-        $note->create($_GET['note'], false, null);
-    }
-}
-
-main();*/
-
+// Entry Point
 function main()
 {
     if(hasValue("submit"))
     {
-        if($_GET["submit"] == "Update")
+        if($_POST["submit"] == "Update")
         {
-            echo "test";
-            updateNote($_GET["noteID"], $_GET["noteMSG"], false, null);
+            updateNote($_POST["noteID"], $_POST["noteMSG"]);
         }
     }
 }
 
+// Execute main
 main();
 
 ?>
@@ -91,24 +29,42 @@ main();
 </style>
 
 
-<form action="view.php" method="get" id="updateForm">
+<form action="#" method="post" id="updateForm">
     
     <!-- Form to load a note -->
     <span>Note ID: </span>
-    <input type="text" name="noteID" placeholder="I.E: 2163" value="<?php echo hasValue('noteID') ? $_GET['noteID'] : ''; ?>">
+    <input type="text" name="id" placeholder="I.E: 2163" value="<?php echo hasValue('id') ? $_POST['id'] : ''; ?>">
     <input type="submit" name="submit" value="Load Note">
     
     <br>
     <br>
 
-    <!-- Form to create a note -->
-    <textarea class="submission" name="noteMSG" form="updateForm" placeholder="Note Text" <?php echo getNote($_GET['noteID'])->canEdit() ? '' : 'disabled' ?>><?php echo hasValue('noteID') ? getNoteMessage($_GET['noteID']) : ''; ?></textarea>
+    <!-- Note load -->
+    <textarea 
+                class="submission" 
+                name="noteMSG" 
+                form="updateForm" 
+                placeholder="Note Text" 
+                
+                <?php /* Check if the note is editable */ 
+                echo loadNote($_POST['id'])[1] ? '' : 'disabled' ?>>
+                
+                <?php /* Load the note */ 
+                echo hasValue('id') ? loadNote($_POST['id'])[0] : ''; ?>
+            
+    </textarea>
+    
     <br>
-    <span><?php echo getNote($_GET['noteID'])->canEdit() ? "This note can be edited" : "This note cannot be edited"; ?></span>
-  	<br>
+    
+    <span>
+            <?php /* Alert the user if the note can be edited */ 
+            echo loadNote($_POST['id'])[1] ? "This note can be edited" : "This note cannot be edited"; ?>
+    </span>
+      
+    <br>
   	<br>
 
-      <?php $pass = getNote($_GET['noteID'])->getPassword(); 
+      <?php $pass = loadNote($_POST['id'])[2];
       
       if($pass == '')
       {
@@ -118,12 +74,11 @@ main();
       {
           echo $pass;
       }
-
-      
       ?>
       	
     <input type="button" value="Copy Password">
-    <?php if(getNote($_GET['noteID'])->canEdit()) { echo "<input type=\"submit\" name=\"submit\" value=\"Update\">"; } ?>
 
+    <?php /* If editable then we show the update note button */ 
+    echo loadNote($_POST['id'])[1] ? "<input type=\"submit\" name=\"submit\" value=\"Update\">" : ""; } ?>
     
 </form>
