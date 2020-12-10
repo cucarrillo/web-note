@@ -16,7 +16,7 @@ function main()
             $edit = $_POST["edit"];
             $password = hasValue("password") ? $_POST["password"] : NULL;
 
-            createNote($note, $edit, $password);
+            echo createNote($note, $edit, $password);
         }
     }
 }
