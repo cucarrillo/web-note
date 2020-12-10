@@ -31,6 +31,8 @@ function createNote($note, $edit, $password)
     // If there is no password then we pass NULL, otherwise pass the password
     $passwordQuery = ($password == null) ? 'NULL' : $password;
 
+    echo "|$note, $edit, $passwordQuery|";
+
     // MySQL query to add the new note
     $query = "INSERT INTO notes (note, edit, password) VALUES ('$note', $edit, $passwordQuery);";
 
