@@ -59,8 +59,8 @@ function createNote($note, $edit, $password)
         // If the execute fails then we return error code -1
         
         disconnectDB($connection);
-
-        return -1;
+        
+        return mysql_error();
     }
 }
 
@@ -99,7 +99,7 @@ function loadNote($id)
     {
         disconnectDB($connection);
 
-        return mysql_error();
+        return false;
     }
 
     // close the connection
