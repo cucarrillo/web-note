@@ -13,7 +13,7 @@ function main()
         if($_POST["submit"] == "Create Note")
         {
             $note = $_POST["note"];
-            $edit = hasValue($_POST["edit"]) ? "true" : "false";
+            $edit = hasValue("edit") ? "true" : "false";
             $password = hasValue("password") ? $_POST["password"] : NULL;
 
             echo createNote($note, $edit, $password);
