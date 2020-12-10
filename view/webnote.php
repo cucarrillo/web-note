@@ -28,14 +28,18 @@ function createNote($note, $edit, $password)
     // Connect to the database
     $connection = connectDB();
 
+
     // If there is no password then we pass NULL, otherwise pass the password
-    $passwordQuery = ($password == null) ? 'NULL' : $password;
+    $noteQuery = mysqli_real_escape_string($connection, $note);
+    $passwordQuery = ($password == null) ? 'NULL' : mysqli_real_escape_string($connection, $password);
     
     // MySQL query to add the new note
-    $query = "INSERT INTO notes (note, edit, password) VALUES ('$note', $edit, $passwordQuery);";
+    $query = "INSERT INTO notes (note, edit, password) VALUES ('$noteQuery', $edit, $passwordQuery);";
+
+    $exec = mysqli_query($connection, $query);
 
     // Execute the query
-    if(mysqli_query($connection, $query))
+    if($exec)
     {
         // If it is successful then we return the note ID
         
@@ -58,9 +62,10 @@ function createNote($note, $edit, $password)
     {
         // If the execute fails then we return error code -1
         
+        return mysqli_error($connection);
+        
         disconnectDB($connection);
 
-        return -1;
     }
 }
 
