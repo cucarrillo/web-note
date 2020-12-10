@@ -10,16 +10,11 @@
             
             <div class="center">
             <script>
-                function redirect()
-                {
-                    //window.location.href='http://www.google.com';
-                }
-                console.log(window.location.href);
-                console.log(window.location.host);
-                console.log(window.location.hostname);
+                function redirect(location)
+                { window.location.href = "window.location.host/" + location + "/"; }
             </script>
-            <input type="Button" value="View Note" onclick="">
-            <input type="Button" value="Create Note" onclick="">
+            <input type="Button" value="View Note" onclick="redirect('view')">
+            <input type="Button" value="Create Note" onclick="redirect('create')">
             </div>
         </div>
     </body>
