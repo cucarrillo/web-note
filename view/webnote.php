@@ -70,7 +70,7 @@ function createNote($note, $edit, $password)
 }
 
 /* Loads a note with given ID */
-function loadNote($id)
+function loadNote($id, $password)
 {
     // Connect to the database
     $connection = connectDB();
@@ -106,6 +106,8 @@ function loadNote($id)
 
         return false;
     }
+
+    echo "?$password?";
 
     // close the connection
     disconnectDB($connection);
