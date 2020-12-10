@@ -65,7 +65,7 @@ main();
       }
       else
       {
-          echo "<input type=\"password\" value=\"$pass\" disabled>"
+          echo "<input type=\"password\" value=\"$pass\" disabled>";
           echo "<input type=\"button\" value=\"Copy Password\" onclick=\"copyPass();\">";
       }
       ?>
