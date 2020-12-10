@@ -107,8 +107,6 @@ function loadNote($id, $pass)
         return false;
     }
 
-    echo "?$password?";
-
     // close the connection
     disconnectDB($connection);
 
