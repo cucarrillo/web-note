@@ -34,7 +34,7 @@ function createNote($note, $edit, $password)
     $passwordQuery = ($password == null) ? 'NULL' : mysqli_real_escape_string($connection, $password);
     
     // MySQL query to add the new note
-    $query = "INSERT INTO notes (note, edit, password) VALUES ('$noteQuery', $edit, '$passwordQuery');";
+    $query = "INSERT INTO notes (note, edit, password) VALUES ('$noteQuery', $edit, $passwordQuery);";
 
     $exec = mysqli_query($connection, $query);
 
@@ -118,7 +118,6 @@ function loadNote($id, $pass)
         }
         else
         {
-            echo "password:[$password]?[$pass]";
             return array("Wrong password", false, NULL);
         }
     }
