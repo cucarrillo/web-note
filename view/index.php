@@ -59,6 +59,8 @@ main();
 
       <?php $pass = loadNote($_POST['id'])[2];
       
+      echo $pass;
+
       if($pass == '')
       {
           echo "no password";
