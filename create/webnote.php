@@ -34,8 +34,10 @@ function createNote($note, $edit, $password)
     // MySQL query to add the new note
     $query = "INSERT INTO notes (note, edit, password) VALUES ('$note', $edit, $passwordQuery);";
 
+    $exec = mysqli_query($connection, $query);
+
     // Execute the query
-    if(mysqli_query($connection, $query))
+    if($exec)
     {
         // If it is successful then we return the note ID
         
@@ -59,8 +61,8 @@ function createNote($note, $edit, $password)
         // If the execute fails then we return error code -1
         
         disconnectDB($connection);
-        
-        return mysql_error();
+
+        return mysql_error($exec);
     }
 }
 
