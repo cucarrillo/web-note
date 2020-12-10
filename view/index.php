@@ -34,6 +34,7 @@ main();
     <!-- Form to load a note -->
     <span>Note ID: </span>
     <input type="text" name="id" placeholder="I.E: 2163" value="<?php echo hasValue('id') ? $_POST['id'] : ''; ?>">
+    <input type="password" name="password" placeholder="Password" value="<?php echo hasValue('password') ? $_POST['password'] : '' ?>">
     <input type="submit" name="submit" value="Load Note">
     
     <br>
