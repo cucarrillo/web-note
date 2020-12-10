@@ -40,15 +40,12 @@ main();
     <br>
 
     <!-- Note load -->
-    <textarea 
-                class="submission" 
+    <textarea class="submission" 
                 name="noteMSG" 
                 form="updateForm" 
                 placeholder="Note Text" 
-                
-                <?php /* Check if the note is editable */ echo loadNote($_POST['id'])[1] ? '' : 'disabled' ?>>
-                <?php /* Load the note */ echo hasValue('id') ? loadNote($_POST['id'])[0] : ''; ?>
-    </textarea>
+                <?php /* Check if the note is editable */ echo loadNote($_POST['id'])[1] ? '' : 'disabled' ?>
+                ><?php /* Load the note */ echo hasValue('id') ? loadNote($_POST['id'])[0] : ''; ?></textarea>
     
     <br>
     
