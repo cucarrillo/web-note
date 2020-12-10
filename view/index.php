@@ -10,7 +10,7 @@ function main()
     {
         if($_POST["submit"] == "Update")
         {
-            updateNote($_POST["noteID"], $_POST["noteMSG"]);
+            updateNote($_POST["id"], $_POST["note"]);
         }
     }
 }
@@ -42,7 +42,7 @@ main();
 
     <!-- Note load -->
     <textarea class="submission" 
-                name="noteMSG" 
+                name="note" 
                 form="updateForm" 
                 placeholder="Note Text" 
                 <?php /* Check if the note is editable */ echo loadNote($_POST['id'], $_POST['password'])[1] ? '' : 'disabled' ?>
