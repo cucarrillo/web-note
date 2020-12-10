@@ -18,7 +18,7 @@ function connectDB()
 /* Disconnectes a connection */
 function disconnectDB($connection) { $connection->close(); }
 
-function hasValue($value) { return isset($_GET[$value]) && !empty(trim($_GET[$value])); }
+function hasValue($value) { return isset($_POST[$value]) && !empty(trim($_POST[$value])); }
 
 /* Creates a note and returns the ID */
 // NOTE: -1 is an error code for failing
