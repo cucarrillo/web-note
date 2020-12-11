@@ -36,7 +36,9 @@ function createNote($note, $edit, $password)
     // MySQL query to add the new note
     $query = "INSERT INTO notes (note, edit, password) VALUES ('$noteQuery', $edit, $passwordQuery);";
 
-    echo $query;
+    echo "<p>$query</p>";
+    echo "<p>$password</p>";
+    echo "<p>$passwordQuery</p>";
 
     $exec = mysqli_query($connection, $query);
 
