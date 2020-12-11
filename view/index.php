@@ -46,10 +46,6 @@ main();?>
                 <div class="pageBlock">
                     <textarea class="textSubmission" name="note" form="updateForm" placeholder="Note Text" <?php /* Check if the note is editable */ echo loadNote($_POST['id'], $_POST['password'])[1] ? '' : 'disabled' ?>><?php /* Load the note */ echo hasValue('id') ? loadNote($_POST['id'], $_POST['password'])[0] : ''; ?></textarea>
                 </div>
-                
-                <div class="pageBlock">
-                    <label>This note can be edited</label>
-                </div>
 
                 <?php /* If editable then we show the update note button */ 
                 echo loadNote($_POST['id'], $_POST['password'])[1] ? "<div class=\"pageBlock\"><input class=\"button\" type=\"submit\" name=\"submit\" value=\"Update\"></div>" : ""; ?>
