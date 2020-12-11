@@ -31,11 +31,11 @@ function createNote($note, $edit, $password)
 
     // If there is no password then we pass NULL, otherwise pass the password
     $noteQuery = mysqli_real_escape_string($connection, $note);
-    $passwordQuery = ($password == null) ? 'NULL' : mysqli_real_escape_string($connection, $password);
+    $passwordQuery = ($password == null) ? 'NULL' : "'".mysqli_real_escape_string($connection, $password)."'";
     
     // MySQL query to add the new note
     $query = "INSERT INTO notes (note, edit, password) VALUES ('$noteQuery', $edit, $passwordQuery);";
-
+    
     $exec = mysqli_query($connection, $query);
 
     // Execute the query
