@@ -17,45 +17,43 @@ function main()
 // Execute main
 main();?>
 
-<!-- Webpage to load/edit a note -->
-<html>
+<!-- Web-Note created by Cesar Ubaldo Carrillo -->
+<!-- index.html : webpage to view/edit a note  -->
+<html lang="en">
     <head>
+        <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
+        <title>Web-Note Viewer</title>
     </head>
     <body>
-        <div class="centerBorder">
+        <div class="pageContainer">
             <form action="#" method="post" id="updateForm">
-                
-                <!-- Form to load a note -->
-                <span>Note ID: </span>
-                <input type="text" name="id" placeholder="I.E: 2163" value="<?php echo hasValue('id') ? $_POST['id'] : ''; ?>">
-                <input type="password" name="password" placeholder="Password" value="<?php echo hasValue('password') ? $_POST['password'] : '' ?>">
-                <input type="submit" name="submit" value="Load Note">
-                
-                <br>
-                <br>
+                <div class="pageBlock"> 
+                    <h1>Create Note</h1>
+                </div>
+                <div class="pageBlock">
+                    <input class="textBox" type="text" name="id" placeholder="Note ID" value="<?php echo hasValue('id') ? $_POST['id'] : ''; ?>">
+                </div>
+                <div class="pageBlock">
+                    <input class="textBox" type="password" name="password" placeholder="Note Password" value="<?php echo hasValue('password') ? $_POST['password'] : '' ?>">
+                </div>
 
-                <!-- Note load -->
-                <textarea class="submission" 
-                            name="note" 
-                            form="updateForm" 
-                            placeholder="Note Text" 
-                            <?php /* Check if the note is editable */ echo loadNote($_POST['id'], $_POST['password'])[1] ? '' : 'disabled' ?>
-                            ><?php /* Load the note */ echo hasValue('id') ? loadNote($_POST['id'], $_POST['password'])[0] : ''; ?></textarea>
+                <div class="pageBlock">
+                    <input class="button" type="submit" name="submit" value="Load Note">
+                </div>
                 
                 <br>
                 
-                <span>
-                        <?php /* Alert the user if the note can be edited */ 
-                        echo loadNote($_POST['id'], $_POST['password'])[1] ? "This note can be edited" : "This note cannot be edited"; ?>
-                </span>
+                <div class="pageBlock">
+                    <textarea class="textSubmission" name="note" form="updateForm" placeholder="Note Text" <?php /* Check if the note is editable */ echo loadNote($_POST['id'], $_POST['password'])[1] ? '' : 'disabled' ?>><?php /* Load the note */ echo hasValue('id') ? loadNote($_POST['id'], $_POST['password'])[0] : ''; ?></textarea>
+                </div>
                 
-                <br>
-                <br>
+                <div class="pageBlock">
+                    <label>This note can be edited</label>
+                </div>
 
                 <?php /* If editable then we show the update note button */ 
-                echo loadNote($_POST['id'], $_POST['password'])[1] ? "<input type=\"submit\" name=\"submit\" value=\"Update\">" : ""; ?>
-                
+                echo loadNote($_POST['id'], $_POST['password'])[1] ? "<div class=\"pageBlock\"><input class=\"button\" type=\"submit\" name=\"submit\" value=\"Update\"></div>" : ""; ?>
             </form>
         </div>
     </body>
