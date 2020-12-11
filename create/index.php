@@ -33,29 +33,3 @@
         </div>
     </body>
 </html>
-
-<?php
-
-// Imports
-require "webnote.php";
-
-// Entry point
-function main()
-{
-    if(hasValue("submit"))
-    {
-        if($_POST["submit"] == "Create Note")
-        {
-            $note = $_POST["note"];
-            $edit = hasValue("edit") ? "true" : "false";
-            $password = hasValue("password") ? "'".$_POST["password"]."'" : NULL;
-
-            $id = createNote($note, $edit, $password);
-
-            echo "<script>alert(\"Note created (ID: $id)\");</script>";
-        }
-    }
-}
-
-// Execute main
-main(); ?>
