@@ -12,7 +12,7 @@ function main()
         {
             $note = $_POST["note"];
             $edit = hasValue("edit") ? "true" : "false";
-            $password = hasValue("password") ? "'".$_POST["password"]."'" : NULL;
+            $password = hasValue("password") ? $_POST["password"] : NULL;
 
             $id = createNote($note, $edit, $password);
 
