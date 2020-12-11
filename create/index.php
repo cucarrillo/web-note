@@ -28,7 +28,7 @@ main(); ?>
 <!-- index.html : webpage to create a note     -->
 <html>
     <head>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css" type="text/css">
         <title>Web-Note Creator</title>
     </head>
     <body>
