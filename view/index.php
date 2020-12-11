@@ -1,8 +1,26 @@
+<?php
+// Imports
+require "webnote.php";
+
+// Entry Point
+function main()
+{
+    if(hasValue("submit"))
+    {
+        if($_POST["submit"] == "Update")
+        {
+            updateNote($_POST["id"], $_POST["note"]);
+        }
+    }
+}
+
+// Execute main
+main();?>
+
 <!-- Web-Note created by Cesar Ubaldo Carrillo -->
 <!-- index.html : webpage to view/edit a note  -->
-<html lang="en">
+<html>
     <head>
-        <meta charset="utf-8">
         <link rel="stylesheet" href="style.css">
         <title>Web-Note Viewer</title>
     </head>
