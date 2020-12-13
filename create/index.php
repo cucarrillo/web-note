@@ -6,13 +6,10 @@ require "webnote.php";
 // Entry point
 function main()
 {
-    echo "pass[]";
     if(hasValue("submit"))
     {
-        echo "pass[.]";
-        if($_POST["submit"] == "Create Note")
+        if($_POST["submit"] == "Create note")
         {
-            echo "pass[..]";
             $note = $_POST["note"];
             $edit = hasValue("edit") ? "true" : "false";
             $password = hasValue("password") ? $_POST["password"] : NULL;
@@ -33,6 +30,10 @@ main(); ?>
     <head>
         <link rel="stylesheet" href="style.css" type="text/css">
         <title>Web-Note Creator</title>
+        <script>
+            // button function to return to main page
+            function rtMain() { ; }
+        </script>
     </head>
     <body>
         <div class="pageContainer">
@@ -60,7 +61,7 @@ main(); ?>
             </form>
             
             <div class="pageBlock">
-                <input class="button" type="button" value="Return to main page" onclick="window.location.href='/'">
+                <input class="button" type="button" value="Return to main page" onclick="rtMain();">
             </div>
 
             <div class="pageBlock">
