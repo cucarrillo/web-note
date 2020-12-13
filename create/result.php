@@ -4,7 +4,7 @@
         <title>Note-Share | Success</title>
         <script>
             // button function to redirect to other pages
-            function redirect(location) { window.location.href = location + "/"; }
+            function redirect(location) { window.location.href = "/" + location + "/"; }
         </script>
     </head>
     <body>
