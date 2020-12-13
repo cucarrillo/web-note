@@ -20,7 +20,7 @@
                 echo '<div class="pageBlock">';
                 echo '<h1>Note Created</h1>';
                 echo '<p>Your note ID:</p>';
-                echo '<p>#: <strong>$id</strong></p>';
+                echo '<p>#: <strong>'.$id.'</strong></p>';
                 echo '<p>Click the button below to view your note</p>';
                 echo '</div>';
                 echo '<div class="pageBlock">';
