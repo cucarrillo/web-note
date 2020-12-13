@@ -6,10 +6,13 @@ require "webnote.php";
 // Entry point
 function main()
 {
+    echo "pass[]";
     if(hasValue("submit"))
     {
+        echo "pass[.]";
         if($_POST["submit"] == "Create Note")
         {
+            echo "pass[..]";
             $note = $_POST["note"];
             $edit = hasValue("edit") ? "true" : "false";
             $password = hasValue("password") ? $_POST["password"] : NULL;
