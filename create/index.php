@@ -1,27 +1,38 @@
 <?php
-
-// Imports
+/* Imports */
 require "webnote.php";
 
-// Entry point
+/* PHP Entry code */
 function main()
 {
+    // Check if the user submited
     if(hasValue("submit"))
     {
         if($_POST["submit"] == "Create note")
         {
-            $note = $_POST["note"];
-            $edit = hasValue("edit") ? "true" : "false";
-            $password = hasValue("password") ? $_POST["password"] : NULL;
+            // Get the values from the forum
+            $note = $_POST["note"]; // grab the note itself
+            $edit = hasValue("edit") ? "true" : "false"; // if the check box has a value then the value is true
+            $password = hasValue("password") ? $_POST["password"] : NULL; // if the password has value then we pass the password
 
+            // create the note and get the ID
             $id = createNote($note, $edit, $password);
+
+            if($id > 0)
+            {
+                header("location:result.php?result=success&id=$id");
+            }
+            else
+            {
+                header("location:result.php?result=failed");
+            }
 
             echo "<script>alert(\"Note created (ID: $id)\");</script>";
         }
     }
 }
 
-// Execute main
+/* Execute main */
 main(); ?>
 
 <!-- Web-Note created by Cesar Ubaldo Carrillo -->
@@ -29,7 +40,7 @@ main(); ?>
 <html>
     <head>
         <link rel="stylesheet" href="style.css" type="text/css">
-        <title>Web-Note Creator</title>
+        <title>Note-Share | Creator</title>
         <script>
             // button function to return to main page
             function rtMain() { ; }

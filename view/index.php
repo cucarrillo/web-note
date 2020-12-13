@@ -23,7 +23,7 @@ main();?>
 <html>
     <head>
         <link rel="stylesheet" href="style.css" type="text/css">
-        <title>Web-Note Viewer</title>
+        <title>Note-Share | Viewer</title>
         <script>
             // button function to return to main page
             function rtMain() { window.location.href = "/"; }
