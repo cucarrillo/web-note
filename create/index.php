@@ -30,10 +30,6 @@ main(); ?>
     <head>
         <link rel="stylesheet" href="style.css" type="text/css">
         <title>Web-Note Creator</title>
-        <script>
-            // button function to return to main page
-            function rtMain() { window.location.href = "/"; }
-        </script>
     </head>
     <body>
         <div class="pageContainer">
@@ -61,7 +57,7 @@ main(); ?>
             </form>
             
             <div class="pageBlock">
-                <input class="button" type="button" value="Return to main page" onclick="rtMain();">
+                <input class="button" type="button" value="Return to main page" onclick="window.location.href='/'">
             </div>
 
             <div class="pageBlock">
