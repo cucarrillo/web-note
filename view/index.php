@@ -48,7 +48,7 @@ main();?>
                 <br>
                 
                 <div class="pageBlock">
-                    <textarea class="<?php echo hasValue('id') ? (loadNote($_POST['id'], $_POST['password'])[0] == "Wrong Password" ? 'textSubmissionError' : 'textSubmission') : 'textSubmission' ?>textSubmission" name="note" form="updateForm" placeholder="Note Text" <?php /* Check if the note is editable */ echo loadNote($_POST['id'], $_POST['password'])[1] ? '' : 'disabled' ?>><?php /* Load the note */ echo hasValue('id') ? loadNote($_POST['id'], $_POST['password'])[0] : ''; ?></textarea>
+                    <textarea class="<?php echo hasValue('id') ? (loadNote($_POST['id'], $_POST['password'])[0] == 'Wrong Password' ? 'textSubmissionError' : 'textSubmission') : 'textSubmission' ?>textSubmission" name="note" form="updateForm" placeholder="Note Text" <?php /* Check if the note is editable */ echo loadNote($_POST['id'], $_POST['password'])[1] ? '' : 'disabled' ?>><?php /* Load the note */ echo hasValue('id') ? loadNote($_POST['id'], $_POST['password'])[0] : ''; ?></textarea>
                 </div>
 
                 <?php /* If editable then we show the update note button */ 
