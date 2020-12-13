@@ -1,4 +1,8 @@
 <?php
+/********************************************
+ * Author: Cesar Ubaldo Carrillo
+ * lib class for create's index.php 
+********************************************/
 
 /* Connects to the database */
 function connectDB()
@@ -21,50 +25,47 @@ function disconnectDB($connection) { $connection->close(); }
 function hasValue($value) { return isset($_POST[$value]) && !empty(trim($_POST[$value])); }
 
 /* Creates a note and returns the ID */
-// NOTE: -1 is an error code for failing
-//       to create the note
 function createNote($note, $edit, $password)
 {
-    // Connect to the database
+    // connect to the database
     $connection = connectDB();
 
 
-    // If there is no password then we pass NULL, otherwise pass the password
-    $noteQuery = mysqli_real_escape_string($connection, $note);
+    // if there is no password then we pass NULL, otherwise pass the password
+    $noteQuery     = mysqli_real_escape_string($connection, $note);
     $passwordQuery = ($password == null) ? 'NULL' : "'".mysqli_real_escape_string($connection, $password)."'";
     
     // MySQL query to add the new note
     $query = "INSERT INTO notes (note, edit, password) VALUES ('$noteQuery', $edit, $passwordQuery);";
-    
+
+    // execute the query & get results
     $exec = mysqli_query($connection, $query);
 
-    // Execute the query
     if($exec)
     {
-        // If it is successful then we return the note ID
+        // if it is successful then we return the note ID
         
         // MySQL query to see how many notes we have
         $query = "SELECT * FROM notes;";
 
-        // Execute query
+        // execute query
         $queryExecute = mysqli_query($connection, $query);
 
-        // Count the number of rows returned
+        // count the number of rows returned
         $noteCount = mysqli_num_rows($queryExecute);
 
-        // Close the connection
+        // close the connection
         disconnectDB($connection);
 
-        // Return the result (AKA the note ID)
+        // return the result (AKA the note ID)
         return $noteCount;
     }
     else
     {
-        // If the execute fails then we return error code -1
-        
-        return mysqli_error($connection);
-        
+        // close the connection
         disconnectDB($connection);
 
+        // if the execute fails then we return the error
+        return mysqli_error($connection);
     }
 }

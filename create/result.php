@@ -1,3 +1,10 @@
+<?php
+/********************************************
+ * Author: Cesar Ubaldo Carrillo
+ * result page for create's index.php 
+********************************************/
+?>
+
 <html>
     <head>
         <link rel="stylesheet" href="style.css" type="text/css">
@@ -9,14 +16,15 @@
     </head>
     <body>
         <div class="pageContainer">
-
-        <?php
+            <?php
+            // get the result passed
             $result = $_GET["result"];
 
             if($result == "success")
             {
                 $id = $_GET['id'];
 
+                // success HTML
                 echo '<div class="pageBlock">';
                 echo '<h1>Note Created</h1>';
                 echo '<p>Your note ID:</p>';
@@ -29,6 +37,7 @@
             }
             else
             {
+                // failed HTML
                 echo '<div class="pageBlock">';
                 echo '<h1>Note Failed to Create</h1>';
                 echo '<p>Click below to try again</p>';
