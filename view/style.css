@@ -32,6 +32,11 @@ body
     max-width: 100%;
 }
 
+.textSubmission:disabled
+{
+    outline: 1px solid orange;
+}
+
 ::placeholder
 {
     color: rgb(43, 43, 43);
