@@ -27,7 +27,21 @@ body
 
     background-color: grey;
     color: white;
-    outline: 1px solid black;
+    outline: 1px solid lightblue;
+
+    max-width: 100%;
+}
+
+.textSubmissionError
+{
+    font-size: 15px;
+    
+    width: 200px;
+    height: 200px;
+
+    background-color: grey;
+    color: white;
+    outline: 1px solid red;
 
     max-width: 100%;
 }
